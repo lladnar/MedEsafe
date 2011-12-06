@@ -24,7 +24,7 @@ class User extends AppModel {
     
 		'username' => array(
 			'minlength' => array(
-				'rule' => array('minlength', 6),
+				'rule' => array('minlength', 5),
 				'message' => '*USERNAME MUST BE 6 CHARACTERS OR MORE',
 				//'allowEmpty' => false,
 				//'required' => false,

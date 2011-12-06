@@ -5,4 +5,6 @@
 	<?php echo $this->Form->create('Patient', array('type' => 'file'));?>
     <?php echo $this->Form->file('import_file');?>
     <?php echo $this->Form->end();?>
+    
+    <div align="right"><?php echo $this->Html->link(__('Back to Patients'), array('action' => 'index'));?></div>
 </div>

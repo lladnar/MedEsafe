@@ -57,8 +57,8 @@ class Patient extends AppModel {
         'social_security' => array(			
             'ssn' => array(
 				'rule' => array('ssn', null, 'us'),
-				'message' => '*REQUIRED FIELD - MUST USE "000-00-0000" FORMAT',
-				//'allowEmpty' => false,
+				'message' => '*MUST USE "000-00-0000" FORMAT',
+				'allowEmpty' => true,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations

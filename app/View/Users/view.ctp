@@ -1,40 +1,55 @@
 <div class="users view">
-<h2><?php  echo __('User');?></h2>
+    <h2><?php  echo __('User');?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<dt><?php echo __('Id');?></dt>
 		<dd>
-			<?php echo h($user['User']['id']); ?>
+			<?php echo h($user['User']['id']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Username'); ?></dt>
+		<dt><?php echo __('Username');?></dt>
 		<dd>
-			<?php echo h($user['User']['username']); ?>
+			<?php echo h($user['User']['username']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Group'); ?></dt>
+        <dt><?php echo __('Active');?></dt>
 		<dd>
-			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id'])); ?>
+			<?php echo h($user['User']['active']) == 1 ? 'yes' : 'no';?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt><?php echo __('Name');?></dt>
 		<dd>
-			<?php echo h($user['User']['created']); ?>
+			<?php echo h($user['User']['first_name']) . ' ' .
+                       h($user['User']['last_name']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Deactivated'); ?></dt>
+		<dt><?php echo __('Group');?></dt>
 		<dd>
-			<?php echo h($user['User']['deactivated']); ?>
+			<?php echo $this->Html->link($user['Group']['name'], array('controller' => 'groups', 'action' => 'view', $user['Group']['id']));?>
+			&nbsp;
+		</dd>
+        <dt><?php echo __('Email');?></dt>
+		<dd>
+			<?php echo h($user['User']['email']);?>
+			&nbsp;
+            <dt><?php echo __('DEA #');?></dt>
+		<dd>
+			<?php echo h($user['User']['dea']);?>
+			&nbsp;
+		<dt><?php echo __('Created');?></dt>
+		<dd>
+			<?php echo h($user['User']['created']);?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Deactivated');?></dt>
+		<dd>
+			<?php echo h($user['User']['deactivated']);?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-
-<div class="actions">	
-	<ul>
-        <b>Page Options:</b><br /><br />
-        <li><?php echo $this->Html->link(__('Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); ?> </li>		
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>		
-	</ul>
+    <br />
+    <table>
+        <td class="actions"><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id']));?></td>      
+    </table>
+    <br />
+    <div align="right"><?php echo $this->Html->link(__('Back to Users'), array('action' => 'index'));?></div>
 </div>

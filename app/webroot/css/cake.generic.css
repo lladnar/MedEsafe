@@ -114,14 +114,15 @@ div.form,
 div.index,
 div.view {
 	float:right;
-	width:76%;
+	width:85%;
 	border-left:1px solid #666;
 	padding:10px 2%;
 }
 div.actions {
 	float:left;
-	width:16%;
-	padding:10px 1.5%;
+ /*	width:16%; */
+	padding:0px 1%;
+
 }
 div.actions h3 {
 	padding-top:0;
@@ -283,8 +284,8 @@ fieldset fieldset div {
 }
 form div {
 	clear: both;
-	margin-bottom: 1em;
-	padding: .5em;
+ /*	margin-bottom: 1em; */
+	padding: .4em;
 	vertical-align: text-top;
 }
 form .input {
@@ -304,7 +305,8 @@ form div.submit {
 	margin-top: 10px;
 }
 label {
-	display: block;
+	display: inline-block;
+    width: 140px; 
 	font-size: 110%;
 	margin-bottom:3px;
 }
@@ -312,8 +314,8 @@ input, textarea {
 	clear: both;
 	font-size: 140%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
-	padding: 1%;
-	width:98%;
+ 	padding: .2%; 
+	width:30%;
 }
 select {
 	clear: both;
@@ -379,6 +381,7 @@ form .error-message {
 	border-radius: none;
 	border: none;
 	background: none;
+    width: 40%;
 	margin: 0;
 	padding-left: 4px;
 	padding-right: 0;

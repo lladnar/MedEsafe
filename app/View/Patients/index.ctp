@@ -63,12 +63,10 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
 
-<div class="actions">
-    <b>Patients Options:</b><br /><br />
-    <ul>
-        <li class="actions"><?php echo $this->Html->link(__('New Patient'), array('action' => 'add'));?></li>
-        <li class="actions"><?php echo $this->Html->link(__('Import HL7'), array ('action' => 'import'));?></li>
-    </ul>
+<br />
+    <table>
+        <td class="actions"><?php echo $this->Html->link(__('New Patient'), array('action' => 'add'));
+        echo $this->Html->link(__('Import HL7'), array ('action' => 'import'));?></td>     
+    </table>
 </div>

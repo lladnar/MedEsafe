@@ -1,19 +1,19 @@
 <?php echo $this->Html->css('jquery-ui-1.8.16.custom');?>
-
-<?php $states = array('options' => array(
-      'AK' => 'AK', 'AL' => 'AL', 'AR' => 'AR', 'AZ' => 'AZ', 'CA' => 'CA', 
-      'CO' => 'CO', 'CT' => 'CT', 'DC' => 'DC', 'DE' => 'DE', 'FL' => 'FL', 
-      'GA' => 'GA', 'HI' => 'HI', 'IA' => 'IA', 'ID' => 'ID', 'IL' => 'IL', 
-      'IN' => 'IN', 'KS' => 'KS', 'KY' => 'KY', 'LA' => 'LA', 'MA' => 'MA', 
-      'MD' => 'MD', 'ME' => 'ME', 'MI' => 'MI', 'MN' => 'MN', 'MO' => 'MO', 
-      'MS' => 'MS', 'MT' => 'MT', 'NC' => 'NC', 'ND' => 'ND', 'NE' => 'NE', 
-      'NH' => 'NH', 'NJ' => 'NJ', 'NM' => 'NM', 'NV' => 'NV', 'NY' => 'NY', 
-      'OH' => 'OH', 'OK' => 'OK', 'OR' => 'OR', 'PA' => 'PA', 'RI' => 'RI', 
-      'SC' => 'SC', 'SD' => 'SD', 'TN' => 'TN', 'TX' => 'TX', 'UT' => 'UT', 
-      'VA' => 'VA', 'VT' => 'VT', 'WA' => 'WA', 'WI' => 'WI', 'WV' => 'WV', 
-      'WY' => 'WY'), 'empty' => ''
-      );?>
-
+<?php
+    $states = array('options' => array(
+        'AK' => 'AK', 'AL' => 'AL', 'AR' => 'AR', 'AZ' => 'AZ', 'CA' => 'CA', 
+        'CO' => 'CO', 'CT' => 'CT', 'DC' => 'DC', 'DE' => 'DE', 'FL' => 'FL', 
+        'GA' => 'GA', 'HI' => 'HI', 'IA' => 'IA', 'ID' => 'ID', 'IL' => 'IL', 
+        'IN' => 'IN', 'KS' => 'KS', 'KY' => 'KY', 'LA' => 'LA', 'MA' => 'MA', 
+        'MD' => 'MD', 'ME' => 'ME', 'MI' => 'MI', 'MN' => 'MN', 'MO' => 'MO', 
+        'MS' => 'MS', 'MT' => 'MT', 'NC' => 'NC', 'ND' => 'ND', 'NE' => 'NE', 
+        'NH' => 'NH', 'NJ' => 'NJ', 'NM' => 'NM', 'NV' => 'NV', 'NY' => 'NY', 
+        'OH' => 'OH', 'OK' => 'OK', 'OR' => 'OR', 'PA' => 'PA', 'RI' => 'RI', 
+        'SC' => 'SC', 'SD' => 'SD', 'TN' => 'TN', 'TX' => 'TX', 'UT' => 'UT', 
+        'VA' => 'VA', 'VT' => 'VT', 'WA' => 'WA', 'WI' => 'WI', 'WV' => 'WV', 
+        'WY' => 'WY'), 'empty' => ''
+    );
+?>
 <div class="patients index">
 	<h2><?php echo __('Add Patient');?></h2>
 	               
@@ -66,7 +66,8 @@
                   echo $this->Form->input('Patient.work_state', $states);
                   echo $this->Form->input('work_zip');
                   echo $this->Form->input('email', array('type' => 'email'));
-            ?>        
+            ?>
+            <br />
             <b><u>Reminder:</u></b> Please attach a scanned copy of the HIPAA Release of Information form and any other signed consents to this record by clicking the Attachments tab and uploading the revelant documents.
             </fieldset>
         </div>      
@@ -137,6 +138,9 @@
             </fieldset>	
         </div>
         
-        <?php echo $this->Form->end(__('Submit'));?>
+        <div align="center"><?php echo $this->Form->end(__('Submit'));?></div>
+        <br />
     </div>
+    <br />
+    <div align="right"><?php echo $this->Html->link(__('Back to Patients'), array('action' => 'index'));?></div>
 </div>

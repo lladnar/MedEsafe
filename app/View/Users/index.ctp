@@ -18,7 +18,7 @@
 	foreach ($users as $user):?>
 	<tr>
 		<td><?php echo h($user['User']['username']);?>&nbsp;</td>
-        <td><?php echo h($user['User']['active']);?>&nbsp;</td>
+        <td><?php echo h($user['User']['active']) == 1 ? 'yes' : 'no';?>&nbsp;</td>
         <td><?php echo h($user['User']['first_name']);?>&nbsp;</td>
         <td><?php echo h($user['User']['last_name']);?>&nbsp;</td>
 		<td>
@@ -31,7 +31,6 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id']));?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id']));?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id']));?>
 		</td>
 	</tr>
     <?php endforeach;?>
@@ -50,11 +49,9 @@
 		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
 	?>
 	</div>
-</div>
-
-<div class="actions">
-    <b>Users Options:</b><br /><br />
-    <ul>
-        <li class="actions"><?php echo $this->Html->link(__('New User'), array('action' => 'add'));?></li>        
-    </ul>
+    <table>
+        <td class="actions"><?php echo $this->Html->link(__('New User'), array('action' => 'add'));?></td>        
+    </table>
+    
+    <div align="right"><?php echo $this->Html->link(__('Back to Management'), array('action' => 'manage'));?></div>
 </div>

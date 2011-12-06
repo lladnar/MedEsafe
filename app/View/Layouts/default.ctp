@@ -16,8 +16,8 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-//$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-$cakeDescription = __d('cake_dev', 'MedEsafe');
+    $cakeDescription = __d('cake_dev', 'MedEsafe');
+    $currentUrl = $this->Html->url();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +30,7 @@ $cakeDescription = __d('cake_dev', 'MedEsafe');
 	<?php
         echo $this->Html->script(array('jquery-1.6.2.min', 'jquery-ui-1.8.16.custom.min'));
         echo $this->Html->meta('icon');
-		echo $this->Html->css ('cake.generic');
+		echo $this->Html->css ('cake.generic');   //echo $this->Html->css('jquery-ui-1.8.16.custom')
 		echo $scripts_for_layout;
 	?>
     <script>
@@ -46,20 +46,23 @@ $cakeDescription = __d('cake_dev', 'MedEsafe');
 		</div>
 		<div id="content">
         
-            <h1 align="right"><?php echo $this->Html->link('logout', array('controller' => 'users', 'logout'));?></h1>
-			<?php echo $this->Session->flash();?>
+            <?php echo $this->Session->flash();?>
             
-        <div class="actions">
-            <b>Catergories:</b><br /><br />
-        	<ul>
-        		<li><?php echo $this->Html->link(__('Appointments'), array('controller' => 'appointments', 'action' => 'index'));?> </li>
-        		<li><?php echo $this->Html->link(__('Patients'), array('controller' => 'patients', 'action' => 'index'));?></li>
-        		<li><?php echo $this->Html->link(__('Management'), array('controller' => 'users', 'action' => 'manage'));?> </li>
-                <li><?php echo $this->Html->link(__('AER Search'), array('controller' => 'aer_searches', 'action' => 'index'));?> </li>
-                <li><?php echo $this->Html->link(__('Access PDR'), array('controller' => 'access_pdr', 'action' => 'index'));?> </li>
-        	</ul>
-        </div>
-
+            <?php //ADD LOGOUT LINK AND LEFT SIDE CHOICES IF NOT LOGIN SCREEN:
+            if ($currentUrl != '/medesafe/users/login') {
+            ?>
+                <h1 align="right"><?php echo $this->Html->link('logout', array('controller' => 'users', 'logout'));?></h1>            
+                <div class="actions">                    
+                	<ul>
+                		<li><?php echo $this->Html->link(__('Appointments'), array('controller' => 'appointments', 'action' => 'index'));?> </li>
+                		<li><?php echo $this->Html->link(__('Patients'), array('controller' => 'patients', 'action' => 'index'));?></li>
+                		<li><?php echo $this->Html->link(__('Management'), array('controller' => 'users', 'action' => 'manage'));?> </li>
+                        <li><?php echo $this->Html->link(__('AER Search'), array('controller' => 'aer_searches', 'action' => 'index'));?> </li>
+                        <li><?php echo $this->Html->link(__('Access PDR'), array('controller' => 'access_pdr', 'action' => 'index'));?> </li>
+                	</ul>
+                </div>
+            <?php };?>
+            
 			<?php echo $content_for_layout;?>
 
 		</div>

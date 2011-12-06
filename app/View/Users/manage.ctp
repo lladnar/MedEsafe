@@ -3,9 +3,9 @@
     <br />
     <h3>I would like to:</h3>
     
-    <?php /*
+    <?php /* RADIO BUTTON VERSION:
         echo $this->Form->create('User', array('action' => 'manage'));
-        echo $this->Form->radio("menu", array(
+        echo $this->Form->radio('menu', array(
              'users' => 'manage User Accounts.',
              'groups' => 'manage Groups.',
              'aer_search' => 'manage AER search.',
@@ -24,7 +24,7 @@
     <br /><br />
     <?php echo $this->Html->link(__('manage Groups.'), array('controller' => 'groups', 'action' => 'index'));?>
     <br /><br />
-    <?php echo $this->Html->link(__('manage AER search.'), array('action' => 'index'));?>
+    <?php echo $this->Html->link(__('manage AER search.'), array('controller' => 'aer_searches', 'action' => 'edit/1'));?>
     <br /><br />
     <?php echo $this->Html->link(__('manage PDR Website.'), array('action' => 'index'));?>
     <br /><br />

@@ -1,5 +1,5 @@
 <div class="patients view">
-<h2><?php  echo __('Patient');?></h2>
+    <h2><?php  echo __('Patient');?></h2>
 	<dl>
 		<dt><?php echo __('Id');?></dt>
 		<dd>
@@ -105,13 +105,12 @@
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-
-<div class="actions">
-	<ul>
-        <b>Page Options:</b><br /><br />
-		<li><?php echo $this->Html->link(__('Edit Patient'), array('action' => 'edit', $patient['Patient']['id']));?> </li>
-		<li><?php echo $this->Html->link(__('Export HL7'), array('controller' => 'patients', 'action' => 'export_hl7'));?></li>
-		<li><?php echo $this->Html->link(__('Export Word'), array('controller' => 'patients', 'action' => 'export_word'));?> </li>        
-    </ul>
+    <br />
+    <table>
+        <td class="actions"><?php echo $this->Html->link(__('Edit Patient'), array('action' => 'edit', $patient['Patient']['id']));
+        echo $this->Html->link(__('Export HL7'), array('controller' => 'patients', 'action' => 'export_hl7'));
+        echo $this->Html->link(__('Export Word'), array('controller' => 'patients', 'action' => 'export_word'));?></td>      
+    </table>
+    <br />
+    <div align="right"><?php echo $this->Html->link(__('Back to Patients'), array('action' => 'index'));?></div>
 </div>
