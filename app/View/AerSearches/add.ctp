@@ -1,21 +1,24 @@
 <div class="aerSearches form">
 <?php echo $this->Form->create('AerSearch');?>
-	<fieldset>
-		<legend><?php echo __('Add Aer Search'); ?></legend>
+    <h2><?php echo __('Add AER Search');?></h2>
+    
+    <fieldset>
 	<?php
-		echo $this->Form->input('name');
-		echo $this->Form->input('active');
-		echo $this->Form->input('url');
-		echo $this->Form->input('regular');
-		echo $this->Form->input('post_value');
+		echo $this->Form->input('name', array('label' => 'Name:'));
+		echo $this->Form->input('active', array(
+              'checked' => 'true'));
+		echo $this->Form->input('url', array('label' => 'URL:'));
+		echo $this->Form->input('expression', array('label' => 'Regular Expression:'));
+		echo $this->Form->input('pairs', array('label' => 'POST Name/Value Pairs:'));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Aer Searches'), array('action' => 'index'));?></li>
-	</ul>
+    
+    <div align="center"><?php echo $this->Form->end(__('Submit'));?></div>
+        <br />
+    </div>
+    <br />    
+    <div class="aerSearches index" align="right">
+    <?php
+        echo $this->Html->link(__('Back to AER Searches'), array('action' => 'index'));
+    ?>
 </div>

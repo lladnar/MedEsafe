@@ -1,4 +1,4 @@
-<?php echo $this->Html->css('jquery-ui-1.8.16.custom');?>
+<?php echo $this->Html->css('jquery-ui-1.8.16.custom', null, array('inline' => false));?>
 <?php
     $states = array('options' => array(
         'AK' => 'AK', 'AL' => 'AL', 'AR' => 'AR', 'AZ' => 'AZ', 'CA' => 'CA', 

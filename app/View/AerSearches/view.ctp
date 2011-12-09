@@ -1,44 +1,35 @@
 <div class="aerSearches view">
-<h2><?php  echo __('Aer Search');?></h2>
+<h2><?php  echo __('AER Search');?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<dt><?php echo __('ID:');?></dt>
 		<dd>
-			<?php echo h($aerSearch['AerSearch']['id']); ?>
+			<?php echo h($aerSearch['AerSearch']['id']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Name'); ?></dt>
+		<dt><?php echo __('Name:'); ?></dt>
 		<dd>
-			<?php echo h($aerSearch['AerSearch']['name']); ?>
+			<?php echo h($aerSearch['AerSearch']['name']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Active'); ?></dt>
+		<dt><?php echo __('Active:'); ?></dt>
 		<dd>
-			<?php echo h($aerSearch['AerSearch']['active']); ?>
+			<?php echo h($aerSearch['AerSearch']['active']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Url'); ?></dt>
+		<dt><?php echo __('URL:');?></dt>
 		<dd>
-			<?php echo h($aerSearch['AerSearch']['url']); ?>
+			<?php echo h($aerSearch['AerSearch']['url']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Regular'); ?></dt>
+		<dt><?php echo __('Regular Expression:'); ?></dt>
 		<dd>
-			<?php echo h($aerSearch['AerSearch']['regular']); ?>
+			<?php echo h($aerSearch['AerSearch']['expression']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Post Value'); ?></dt>
+		<dt><?php echo __('POST Name/Value Pairs:');?></dt>
 		<dd>
-			<?php echo h($aerSearch['AerSearch']['post_value']); ?>
+			<?php echo h($aerSearch['AerSearch']['pairs']);?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Aer Search'), array('action' => 'edit', $aerSearch['AerSearch']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Aer Search'), array('action' => 'delete', $aerSearch['AerSearch']['id']), null, __('Are you sure you want to delete # %s?', $aerSearch['AerSearch']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Aer Searches'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Aer Search'), array('action' => 'add')); ?> </li>
-	</ul>
 </div>

@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+
 /**
  * Users Controller
  *
@@ -7,11 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
-    function beforeFilter() {
-    parent::beforeFilter();
-    $this->Auth->allow('*');
-    } //remove after intial setup
-        
 /**
  * index method
  *
@@ -105,6 +101,7 @@ class UsersController extends AppController {
     function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
+                $this->Session->setFlash('Login successful.');
                 $this->redirect($this->Auth->redirect());
             } else {
                 $this->Session->setFlash('Username or password was incorrect.');
@@ -127,9 +124,9 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function manage($menu = null) {
-        if ($menu != null){
-        $this->redirect(array('action' => $menu));}
-        //$this->set('results', $this->User->manage($this->data['User']['q']));
+	public function manage() {
+        if ($this->request->is('post')) {
+            $this->redirect(array('controller' => $this->request->data['User']['radio'], 'action' => 'index'));
+        }
 	}
 }

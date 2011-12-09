@@ -1,54 +1,45 @@
 <div class="appointments view">
-<h2><?php  echo __('Appointment');?></h2>
+    <h2><?php  echo __('Appointment');?></h2>
 	<dl>
-		<dt><?php echo __('Id'); ?></dt>
+		<dt><?php echo __('Id');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['id']); ?>
+			<?php echo h($appointment['Appointment']['id']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Patient Name'); ?></dt>
+		<dt><?php echo __('Patient Name:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['patient_name']); ?>
+			<?php echo h($appointment['Patient']['name']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('With'); ?></dt>
+		<dt><?php echo __('Appointment With:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['with']); ?>
+			<?php echo h($appointment['User']['name']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('By'); ?></dt>
+		<dt><?php echo __('Scheduled By:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['by']); ?>
+			<?php echo h($appointment['Appointment']['scheduled_by']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Description'); ?></dt>
+		<dt><?php echo __('Description:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['description']); ?>
+			<?php echo h($appointment['Appointment']['description']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Start'); ?></dt>
+		<dt><?php echo __('Start Time:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['start']); ?>
+			<?php echo h($appointment['Appointment']['start_time']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('End'); ?></dt>
+		<dt><?php echo __('End Time:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['end']); ?>
+			<?php echo h($appointment['Appointment']['end_time']);?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Notes'); ?></dt>
+		<dt><?php echo __('Notes:');?></dt>
 		<dd>
-			<?php echo h($appointment['Appointment']['notes']); ?>
+			<?php echo h($appointment['Appointment']['notes']);?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Appointment'), array('action' => 'edit', $appointment['Appointment']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Appointment'), array('action' => 'delete', $appointment['Appointment']['id']), null, __('Are you sure you want to delete # %s?', $appointment['Appointment']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Appointments'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Appointment'), array('action' => 'add')); ?> </li>
-	</ul>
 </div>

@@ -1,5 +1,5 @@
 <?php
-/* Appointments Test cases generated on: 2011-12-02 06:03:54 : 1322805834*/
+/* Appointments Test cases generated on: 2011-12-09 01:48:02 : 1323395282*/
 App::uses('AppointmentsController', 'Controller');
 
 /**
@@ -36,7 +36,7 @@ class AppointmentsControllerTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.appointment');
+	public $fixtures = array('app.appointment', 'app.patient', 'app.provider', 'app.user', 'app.group');
 
 /**
  * setUp method

@@ -1,5 +1,6 @@
 <?php
-App::uses('AppModel', 'Model', 'AuthComponent', 'Controller/Component');
+App::uses('AppModel', 'Model');
+
 /**
  * Patient Model
  *
@@ -11,17 +12,27 @@ class Patient extends AppModel {
  // SEARCH ENGINE:
     public $actsAs = array('Searchable');
     
-/**
- * Display field
- *
- * @var string
- */
+    /**
+     * Display field
+     *
+     * @var string
+     */
 	public $displayField = 'name';
-/**
- * Validation rules
- *
- * @var array
- */
+    
+    /**
+     * Virtual field
+     *
+     * @var array
+     */
+	public $virtualFields = array(
+        'name' => 'CONCAT(Patient.first_name, " ", Patient.last_name)'
+    );
+    
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
   	public $validate = array(
 		
 		'first_name' => array(
@@ -259,4 +270,26 @@ class Patient extends AppModel {
             )
         ),
 	);
+    
+/**
+ * hasMany associations
+ *
+ * @var array
+ */
+	public $hasMany = array(
+		'Provider' => array(
+			'className' => 'Provider',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
+
 }

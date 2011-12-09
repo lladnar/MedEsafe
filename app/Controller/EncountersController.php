@@ -47,6 +47,12 @@ class EncountersController extends AppController {
 				$this->Session->setFlash(__('The encounter could not be saved. Please, try again.'));
 			}
 		}
+		$patients = $this->Encounter->Patient->find('list');
+		$encounterTypes = $this->Encounter->EncounterType->find('list');
+		$users = $this->Encounter->User->find('list');
+		$appointments = $this->Encounter->Appointment->find('list');
+		$attachments = $this->Encounter->Attachment->find('list');
+		$this->set(compact('patients', 'encounterTypes', 'users', 'appointments', 'attachments'));
 	}
 
 /**
@@ -70,6 +76,12 @@ class EncountersController extends AppController {
 		} else {
 			$this->request->data = $this->Encounter->read(null, $id);
 		}
+		$patients = $this->Encounter->Patient->find('list');
+		$encounterTypes = $this->Encounter->EncounterType->find('list');
+		$users = $this->Encounter->User->find('list');
+		$appointments = $this->Encounter->Appointment->find('list');
+		$attachments = $this->Encounter->Attachment->find('list');
+		$this->set(compact('patients', 'encounterTypes', 'users', 'appointments', 'attachments'));
 	}
 
 /**

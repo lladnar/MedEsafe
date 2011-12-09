@@ -1,23 +1,40 @@
 <div class="appointments form">
-<?php echo $this->Form->create('Appointment');?>
+    <?php echo $this->Form->create('Appointment');?>
+        <h2><?php echo __('Add Appointment');?></h2>
 	<fieldset>
-		<legend><?php echo __('Add Appointment'); ?></legend>
+		
 	<?php
-		echo $this->Form->input('patient_name');
-		echo $this->Form->input('with');
-		echo $this->Form->input('by');
-		echo $this->Form->input('description');
-		echo $this->Form->input('start');
-		echo $this->Form->input('end');
-		echo $this->Form->input('notes');
+		echo $this->Form->input('patient_id', array(
+            'label' => 'Patient Name:',
+            'empty' => ''
+            ));
+        echo $this->Form->input('user_id', array(
+            'label' => 'Appointment With:',
+            'empty' => ''
+            )); 		
+        echo $this->Form->input('scheduled_by', array(
+            'label' => 'Scheduled By:',
+            'value' => $current_user['name'],
+            'readonly'           
+            ));
+		echo $this->Form->input('description', array(
+            'label' => 'Description:'
+            ));
+		echo $this->Form->input('start_time', array(
+            'label' => 'Start Time:',
+            'interval' => 30
+            ));
+		echo $this->Form->input('end_time', array(
+            'label' => 'End Time:',
+            'interval' => 30
+            ));
+		echo $this->Form->input('notes', array(
+            'label' => 'Notes:'
+            ));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Appointments'), array('action' => 'index'));?></li>
-	</ul>
+    
+    <div align="center"><?php echo $this->Form->end(__('Submit'));?></div>
+    <br />
+    <div align="right"><?php echo $this->Html->link(__('Back to Appointments'), array('action' => 'index'));?></div>
 </div>

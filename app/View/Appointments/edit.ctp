@@ -1,25 +1,40 @@
 <div class="appointments form">
-<?php echo $this->Form->create('Appointment');?>
+    <?php echo $this->Form->create('Appointment');?>
+        <h2><?php echo __('Edit Appointment');?></h2>
 	<fieldset>
-		<legend><?php echo __('Edit Appointment'); ?></legend>
+		
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('patient_name');
-		echo $this->Form->input('with');
-		echo $this->Form->input('by');
-		echo $this->Form->input('description');
-		echo $this->Form->input('start');
-		echo $this->Form->input('end');
-		echo $this->Form->input('notes');
+		echo $this->Form->input('Patient.name', array(
+            'label' => 'Patient Name:',
+            'readonly'
+            ));
+        echo $this->Form->input('user_id', array(
+            'label' => 'Appointment With:',
+            'empty' => ''
+            )); 		
+        echo $this->Form->input('scheduled_by', array(
+            'label' => 'Revised By:',
+            'value' => $current_user['name'],
+            'readonly'           
+            ));
+		echo $this->Form->input('description', array(
+            'label' => 'Description:'
+            ));
+		echo $this->Form->input('start_time', array(
+            'label' => 'Start Time:',
+            'interval' => 30
+            ));
+		echo $this->Form->input('end_time', array(
+            'label' => 'End Time:',
+            'interval' => 30
+            ));
+		echo $this->Form->input('notes', array(
+            'label' => 'Notes:'
+            ));
 	?>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit'));?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Appointment.id')), null, __('Are you sure you want to delete # %s?', $this->Form->value('Appointment.id'))); ?></li>
-		<li><?php echo $this->Html->link(__('List Appointments'), array('action' => 'index'));?></li>
-	</ul>
+    
+    <div align="center"><?php echo $this->Form->end(__('Submit'));?></div>
+    <br />
+    <div align="right"><?php echo $this->Html->link(__('Back to Appointments'), array('action' => 'index'));?></div>
 </div>

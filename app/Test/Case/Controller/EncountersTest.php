@@ -1,5 +1,5 @@
 <?php
-/* Encounters Test cases generated on: 2011-12-02 06:04:36 : 1322805876*/
+/* Encounters Test cases generated on: 2011-12-09 18:37:12 : 1323455832*/
 App::uses('Encounters', 'Controller');
 
 /**

@@ -4,7 +4,7 @@
     
     <?php  
         echo $this->Form->create('Patient', array('action' => 'search')); 
-        echo $this->Form->input("q", array('label' => 'Search for')); 
+        echo $this->Form->input("q", array('label' => 'Search for'));
         echo $this->Form->end("Search");
         
      /*   echo $this->Form->create('Patient', array('action' => 'index'));
@@ -41,8 +41,11 @@
 		<td><?php echo h($patient['Patient']['date_of_birth']);?>&nbsp;</td>
 		<td><?php echo h($patient['Patient']['social_security']);?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $patient['Patient']['id']));?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $patient['Patient']['id']));?>
+            <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $patient['Patient']['id']));?>
+            <?php echo $this->Html->link(__('Appt.'), array('controller' => 'appointments', 'action' => 'index'));?>
+            <?php echo $this->Html->link(__('Enctr.'), array('controller' => 'encounters', 'action' => 'index'));?>
+			<?php echo $this->Html->link(__('Export'), array('action' => 'view', $patient['Patient']['id']));?>
+			
 		</td>
 	</tr>
     <?php// }?>

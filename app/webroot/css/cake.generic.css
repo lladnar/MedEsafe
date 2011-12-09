@@ -292,7 +292,7 @@ form .input {
 	color: #444;
 }
 form .required {
-	font-weight: bold;
+ /*	font-weight: bold; */
 }
 form .required label:after {
 	color: #e32;
@@ -307,12 +307,12 @@ form div.submit {
 label {
 	display: inline-block;
     width: 140px; 
-	font-size: 110%;
+	font-size: 100%;
 	margin-bottom:3px;
 }
 input, textarea {
 	clear: both;
-	font-size: 140%;
+	font-size: 100%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
  	padding: .2%; 
 	width:30%;

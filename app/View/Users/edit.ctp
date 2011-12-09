@@ -1,7 +1,7 @@
 <div class="users form">
+    <h2><?php echo __('Edit User');?></h2>
     <?php echo $this->Form->create('User');?>	
-    <fieldset>
-        <h2><?php echo __('Edit User');?></h2><br />		
+    <fieldset>	
 	<?php
 		echo $this->Form->input('username');
         echo $this->Form->input('active');
@@ -12,9 +12,9 @@
             ));
         echo $this->Form->input('email', array('type' => 'email'));
         echo $this->Form->input('dea', array('label' => 'DEA #'));
-		echo $this->Form->input('User.password');
-        echo $this->Form->input('confirm');
-		
+		echo $this->Form->input('password');
+        echo $this->Form->input('confirm_password', array(
+            'type'=>'password'));
 	?>
 	</fieldset>
     <?php echo $this->Form->end(__('Submit'));?>
