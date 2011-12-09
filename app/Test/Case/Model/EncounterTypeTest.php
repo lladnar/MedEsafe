@@ -1,5 +1,5 @@
 <?php
-/* EncounterType Test cases generated on: 2011-12-09 18:36:17 : 1323455777*/
+/* EncounterType Test cases generated on: 2011-12-09 22:32:02 : 1323469922*/
 App::uses('EncounterType', 'Model');
 
 /**
@@ -12,7 +12,7 @@ class EncounterTypeTestCase extends CakeTestCase {
  *
  * @var array
  */
-	public $fixtures = array('app.encounter_type', 'app.encounter');
+	public $fixtures = array('app.encounter_type', 'app.encounter', 'app.patient', 'app.provider', 'app.user', 'app.group', 'app.appointment', 'app.attachment', 'app.activity_log');
 
 /**
  * setUp method

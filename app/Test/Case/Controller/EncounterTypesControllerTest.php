@@ -1,5 +1,5 @@
 <?php
-/* EncounterTypes Test cases generated on: 2011-12-09 20:19:27 : 1323461967*/
+/* EncounterTypes Test cases generated on: 2011-12-09 22:32:03 : 1323469923*/
 App::uses('EncounterTypesController', 'Controller');
 
 /**

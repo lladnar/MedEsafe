@@ -17,7 +17,7 @@
              'settings' => 'edit Calendar Settings.',
              'activity_logs' => 'view Activity Logs.'), array(
              'legend' => false,
-             'value' => false,
+             'value' => 'users',
              ));
         echo $this->Form->end('Submit');
     ?>
