@@ -7,7 +7,8 @@
         echo $this->Form->input("q", array('label' => 'Search for'));
         echo $this->Form->end("Search");
         
-     /*   echo $this->Form->create('Patient', array('action' => 'index'));
+     /* Dropdown for Active/Inactive/All patient filter
+        echo $this->Form->create('Patient', array('action' => 'index'));
         echo $this->Form->input('show', array(
                     'label' => 'Show: ',
                     'options' => array(
@@ -17,12 +18,12 @@
         echo $this->Form->end("View");   */             
     ?>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort('id', 'ID');?></th>
             <th><?php echo $this->Paginator->sort('active');?></th>
 			<th><?php echo $this->Paginator->sort('first_name');?></th>
             <th><?php echo $this->Paginator->sort('last_name');?></th>
-			<th><?php echo $this->Paginator->sort('date_of_birth');?></th>
-			<th><?php echo $this->Paginator->sort('social_security');?></th>
+			<th><?php echo $this->Paginator->sort('dob', 'DoB');?></th>
+			<th><?php echo $this->Paginator->sort('ssn', 'SSN');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -38,14 +39,14 @@
         <td><?php echo h($patient['Patient']['active']) == 1 ? 'yes' : 'no';?>&nbsp;</td>
         <td><?php echo h($patient['Patient']['first_name']);?>&nbsp;</td>
 		<td><?php echo h($patient['Patient']['last_name']);?>&nbsp;</td>
-		<td><?php echo h($patient['Patient']['date_of_birth']);?>&nbsp;</td>
-		<td><?php echo h($patient['Patient']['social_security']);?>&nbsp;</td>
+		<td><?php echo h($patient['Patient']['dob']);?>&nbsp;</td>
+		<td><?php echo h($patient['Patient']['ssn']);?>&nbsp;</td>
 		<td class="actions">
             <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $patient['Patient']['id']));?>
+            <?php echo $this->Html->link(__('Ins.'), array('controller' => 'providers', 'action' => 'index'));?>
             <?php echo $this->Html->link(__('Appt.'), array('controller' => 'appointments', 'action' => 'index'));?>
             <?php echo $this->Html->link(__('Enctr.'), array('controller' => 'encounters', 'action' => 'index'));?>
-			<?php echo $this->Html->link(__('Export'), array('action' => 'view', $patient['Patient']['id']));?>
-			
+			<?php echo $this->Html->link(__('Export'), array('action' => 'export', $patient['Patient']['id']));?>
 		</td>
 	</tr>
     <?php// }?>

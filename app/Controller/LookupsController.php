@@ -27,7 +27,7 @@ class LookupsController extends AppController {
 	public function view($id = null) {
 		$this->Lookup->id = $id;
 		if (!$this->Lookup->exists()) {
-			throw new NotFoundException(__('Invalid lookup'));
+			throw new NotFoundException(__('Invalid lookup.'));
 		}
 		$this->set('lookup', $this->Lookup->read(null, $id));
 	}
@@ -41,10 +41,10 @@ class LookupsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Lookup->create();
 			if ($this->Lookup->save($this->request->data)) {
-				$this->Session->setFlash(__('The lookup has been saved'));
+				$this->Session->setFlash(__('Lookup saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lookup could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Lookup not saved.  Errors found.'));
 			}
 		}
 	}
@@ -58,14 +58,14 @@ class LookupsController extends AppController {
 	public function edit($id = null) {
 		$this->Lookup->id = $id;
 		if (!$this->Lookup->exists()) {
-			throw new NotFoundException(__('Invalid lookup'));
+			throw new NotFoundException(__('Invalid lookup.'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Lookup->save($this->request->data)) {
-				$this->Session->setFlash(__('The lookup has been saved'));
+				$this->Session->setFlash(__('Lookup saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The lookup could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Lookup not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->Lookup->read(null, $id);
@@ -84,13 +84,13 @@ class LookupsController extends AppController {
 		}
 		$this->Lookup->id = $id;
 		if (!$this->Lookup->exists()) {
-			throw new NotFoundException(__('Invalid lookup'));
+			throw new NotFoundException(__('Invalid lookup.'));
 		}
 		if ($this->Lookup->delete()) {
-			$this->Session->setFlash(__('Lookup deleted'));
+			$this->Session->setFlash(__('Lookup deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Lookup was not deleted'));
+		$this->Session->setFlash(__('Lookup not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

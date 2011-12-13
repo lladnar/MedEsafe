@@ -27,7 +27,7 @@ class AttachmentsController extends AppController {
 	public function view($id = null) {
 		$this->Attachment->id = $id;
 		if (!$this->Attachment->exists()) {
-			throw new NotFoundException(__('Invalid attachment'));
+			throw new NotFoundException(__('Invalid attachment.'));
 		}
 		$this->set('attachment', $this->Attachment->read(null, $id));
 	}
@@ -41,10 +41,10 @@ class AttachmentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Attachment->create();
 			if ($this->Attachment->save($this->request->data)) {
-				$this->Session->setFlash(__('The attachment has been saved'));
+				$this->Session->setFlash(__('Attachment saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The attachment could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Attachment not saved.  Errors found.'));
 			}
 		}
 		$patients = $this->Attachment->Patient->find('list');
@@ -61,14 +61,14 @@ class AttachmentsController extends AppController {
 	public function edit($id = null) {
 		$this->Attachment->id = $id;
 		if (!$this->Attachment->exists()) {
-			throw new NotFoundException(__('Invalid attachment'));
+			throw new NotFoundException(__('Invalid attachment.'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Attachment->save($this->request->data)) {
-				$this->Session->setFlash(__('The attachment has been saved'));
+				$this->Session->setFlash(__('Attachment saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The attachment could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Attachment not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->Attachment->read(null, $id);
@@ -90,13 +90,13 @@ class AttachmentsController extends AppController {
 		}
 		$this->Attachment->id = $id;
 		if (!$this->Attachment->exists()) {
-			throw new NotFoundException(__('Invalid attachment'));
+			throw new NotFoundException(__('Invalid attachment.'));
 		}
 		if ($this->Attachment->delete()) {
-			$this->Session->setFlash(__('Attachment deleted'));
+			$this->Session->setFlash(__('Attachment deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Attachment was not deleted'));
+		$this->Session->setFlash(__('Attachment not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

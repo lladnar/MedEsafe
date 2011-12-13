@@ -3,10 +3,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('name');?></th>
-			<th><?php echo $this->Paginator->sort('active');?></th>
-			<th><?php echo $this->Paginator->sort('url', 'URL');?></th>
-			<th><?php echo $this->Paginator->sort('expression', 'Regular Expression');?></th>
-			<th><?php echo $this->Paginator->sort('pairs', 'POST Name/Value Pairs');?></th>
+			<th><?php echo $this->Paginator->sort('active');?></th>			
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -14,10 +11,7 @@
 	foreach ($aerSearches as $aerSearch):?>
 	<tr>
 		<td><?php echo h($aerSearch['AerSearch']['name']);?>&nbsp;</td>
-		<td><?php echo h($aerSearch['AerSearch']['active']) == 1 ? 'yes' : 'no';?>&nbsp;</td>
-		<td><?php echo h($aerSearch['AerSearch']['url']);?>&nbsp;</td>
-		<td><?php echo h($aerSearch['AerSearch']['expression']);?>&nbsp;</td>
-		<td><?php echo h($aerSearch['AerSearch']['pairs']);?>&nbsp;</td>
+		<td><?php echo h($aerSearch['AerSearch']['active']) == 1 ? 'yes' : 'no';?>&nbsp;</td>		
 		<td class="actions">
 			<?php //echo $this->Html->link(__('View'), array('action' => 'view', $aerSearch['AerSearch']['id']));?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $aerSearch['AerSearch']['id']));?>

@@ -15,7 +15,6 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
     $cakeDescription = __d('cake_dev', 'MedEsafe');
     $currentUrl = $this->Html->url();
 ?>
@@ -30,7 +29,7 @@
 	<?php
         echo $this->Html->script(array('jquery-1.7.1.min', 'jquery-ui-1.8.16.custom.min'));
         echo $this->Html->meta('icon');
-		echo $this->Html->css ('cake.generic');   //echo $this->Html->css('jquery-ui-1.8.16.custom')
+		echo $this->Html->css ('medesafe.main');   //echo $this->Html->css('jquery-ui-1.8.16.custom')
 		echo $scripts_for_layout;
 	?>
     <script>
@@ -44,12 +43,10 @@
 		<div id="header">
 			<h1><?php echo $this->Html->link('MedEsafe', 'http://medesafe.net');?></h1>            
 		</div>
-		<div id="content">
-        
+		<div id="content">        
             <?php echo $this->Session->flash();?>
-            <?php echo $this->Session->flash('auth');?>
-            
-            <?php //ADD LOGOUT LINK AND LEFT SIDE CHOICES IF NOT LOGIN SCREEN:
+            <?php echo $this->Session->flash('auth');?>            
+            <?php //ADDS LOGOUT LINK AND LEFT SIDE CHOICES IF NOT LOGIN SCREEN:
             if ($currentUrl != '/medesafe/users/login') {
             ?>
                 <h1 align="right"><?php echo $this->Html->link('logout', array('controller' => 'users', 'action' => 'logout'));?></h1>            
@@ -59,7 +56,7 @@
                 		<li><?php echo $this->Html->link(__('Patients'), array('controller' => 'patients', 'action' => 'index'));?></li>
                 		<li><?php echo $this->Html->link(__('Management'), array('controller' => 'users', 'action' => 'manage'));?> </li>
                         <li><?php echo $this->Html->link(__('AER Search'), array('controller' => 'aer_searches', 'action' => 'search'));?> </li>
-                        <li><?php echo $this->Html->link(__('Access PDR'), 'http://www.pdr.net');?> </li>
+                        <li><?php echo $this->Html->link(__('Access PDR'), 'http://' . $pdr['Pdr']['url']);?> </li>
                 	</ul>
                 </div>
             <?php };?>

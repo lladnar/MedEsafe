@@ -27,7 +27,7 @@ class EncountersController extends AppController {
 	public function view($id = null) {
 		$this->Encounter->id = $id;
 		if (!$this->Encounter->exists()) {
-			throw new NotFoundException(__('Invalid encounter'));
+			throw new NotFoundException(__('Invalid encounter.'));
 		}
 		$this->set('encounter', $this->Encounter->read(null, $id));
 	}
@@ -41,10 +41,10 @@ class EncountersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Encounter->create();
 			if ($this->Encounter->save($this->request->data)) {
-				$this->Session->setFlash(__('The encounter has been saved'));
+				$this->Session->setFlash(__('Encounter saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The encounter could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Encounter not saved.  Errors found.'));
 			}
 		}
 		$patients = $this->Encounter->Patient->find('list');
@@ -64,14 +64,14 @@ class EncountersController extends AppController {
 	public function edit($id = null) {
 		$this->Encounter->id = $id;
 		if (!$this->Encounter->exists()) {
-			throw new NotFoundException(__('Invalid encounter'));
+			throw new NotFoundException(__('Invalid encounter.'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Encounter->save($this->request->data)) {
-				$this->Session->setFlash(__('The encounter has been saved'));
+				$this->Session->setFlash(__('Encounter saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The encounter could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Encounter not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->Encounter->read(null, $id);
@@ -96,13 +96,13 @@ class EncountersController extends AppController {
 		}
 		$this->Encounter->id = $id;
 		if (!$this->Encounter->exists()) {
-			throw new NotFoundException(__('Invalid encounter'));
+			throw new NotFoundException(__('Invalid encounter.'));
 		}
 		if ($this->Encounter->delete()) {
-			$this->Session->setFlash(__('Encounter deleted'));
+			$this->Session->setFlash(__('Encounter deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Encounter was not deleted'));
+		$this->Session->setFlash(__('Encounter not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

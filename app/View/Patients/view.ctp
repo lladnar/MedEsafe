@@ -20,12 +20,12 @@
 		</dd>        
 		<dt><?php echo __('DoB');?></dt>
 		<dd>
-			<?php echo h($patient['Patient']['date_of_birth']);?>
+			<?php echo h($patient['Patient']['dob']);?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('SSN');?></dt>
 		<dd>
-			<?php echo h($patient['Patient']['social_security']);?>
+			<?php echo h($patient['Patient']['ssn']);?>
 			&nbsp;
 		</dd>
         <dt><?php echo __('Gender');?></dt>
@@ -60,21 +60,19 @@
 		</dd>
         <dt><?php echo __('Home Address');?></dt>
 		<dd>
-			<?php echo h($patient['Patient']['home_address']) . ' ' . 
-                       h($patient['Patient']['home_address_2']);?>                       
+			<?php echo h($patient['Patient']['address']);?>                       
 			&nbsp;
 		</dd>
         <dt><?php echo __('City State Zip');?></dt>
 		<dd>
-            <?php echo  h($patient['Patient']['home_city']) . ' ' . 
-                        h($patient['Patient']['home_state']) . ' ' . 
-                        h($patient['Patient']['home_zip']);?>
+            <?php echo  h($patient['Patient']['city']) . ' ' . 
+                        h($patient['Patient']['state']) . ' ' . 
+                        h($patient['Patient']['zip']);?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Work Address');?></dt>
 		<dd>
-			<?php echo h($patient['Patient']['work_address']) . ' ' . 
-                       h($patient['Patient']['work_address_2']);?>                       
+			<?php echo h($patient['Patient']['work_address']);?>                       
 			&nbsp;
 		</dd>
         <dt><?php echo __('City State Zip');?></dt>
@@ -105,12 +103,6 @@
 			&nbsp;
 		</dd>
 	</dl>
-    <br />
-    <table>
-        <td class="actions"><?php echo $this->Html->link(__('Edit Patient'), array('action' => 'edit', $patient['Patient']['id']));
-        echo $this->Html->link(__('Export HL7'), array('controller' => 'patients', 'action' => 'export_hl7'));
-        echo $this->Html->link(__('Export Word'), array('controller' => 'patients', 'action' => 'export_word'));?></td>      
-    </table>
     <br />
     <div align="right"><?php echo $this->Html->link(__('Back to Patients'), array('action' => 'index'));?></div>
 </div>

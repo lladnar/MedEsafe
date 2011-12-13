@@ -10,12 +10,15 @@
     ));
 ?>
 <div class="settings form">
-    <h2><?php  echo __('Edit Calendar Settings');?></h2>
+    <h2><?php  echo __('Calendar Settings');?></h2>
     <?php echo $this->Form->create('Setting');?>
 	<fieldset>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('user_id', array('label' => 'Custodian:'));
+		echo $this->Form->input('user_id', array(
+            'label' => 'Custodian:',
+            'empty' => ''
+            ));
 		echo $this->Form->input('Setting.week_start', $days, array('label' => 'Work Week Start:'));
 		echo $this->Form->input('Setting.week_end', $days, array('label' => 'Work Week End:'));
 		echo $this->Form->input('day_start', array(

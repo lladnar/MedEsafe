@@ -51,10 +51,10 @@ class AerSearchesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->AerSearch->create();
 			if ($this->AerSearch->save($this->request->data)) {
-				$this->Session->setFlash(__('The AER Search has been saved'));
+				$this->Session->setFlash(__('AER Search saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The AER Search could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('AER Search not saved.  Errors found.'));
 			}
 		}
 	}
@@ -68,15 +68,15 @@ class AerSearchesController extends AppController {
 	public function edit($id = null) {		
 		$this->AerSearch->id = $id;
 		if (!$this->AerSearch->exists()) {
-			throw new NotFoundException(__('Invalid AER Search'));
+			throw new NotFoundException(__('Invalid AER Search.'));
 		}
         $this->set('aerSearch', $this->AerSearch->read(null, $id));
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->AerSearch->save($this->request->data)) {
-				$this->Session->setFlash(__('The AER Search has been saved'));
+				$this->Session->setFlash(__('AER Search saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The AER Search could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('AER Search not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->AerSearch->read(null, $id);
@@ -95,13 +95,13 @@ class AerSearchesController extends AppController {
 		}
 		$this->AerSearch->id = $id;
 		if (!$this->AerSearch->exists()) {
-			throw new NotFoundException(__('Invalid AER Search'));
+			throw new NotFoundException(__('Invalid AER Search.'));
 		}
 		if ($this->AerSearch->delete()) {
-			$this->Session->setFlash(__('AER Search deleted'));
+			$this->Session->setFlash(__('AER Search deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('AER Search was not deleted'));
+		$this->Session->setFlash(__('AER Search not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

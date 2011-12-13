@@ -16,7 +16,6 @@ class SettingsController extends AppController {
 	public function index() {
 		$this->redirect(array('action' => 'edit/1'));
 	}
-
     /**
      * edit method
      *
@@ -30,10 +29,10 @@ class SettingsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Setting->save($this->request->data)) {
-				$this->Session->setFlash(__('Calendar settings have been saved.'));
+				$this->Session->setFlash(__('Calendar settings saved.'));
 				$this->redirect(array('controller' => 'users', 'action' => 'manage'));
 			} else {
-				$this->Session->setFlash(__('Calendar settings could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Calendar settings not saved. Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->Setting->read(null, $id);

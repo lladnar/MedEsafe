@@ -1,5 +1,5 @@
 <div class="encounterTypes view">
-<h2><?php  echo __('Encounter Type');?></h2>
+    <h2><?php  echo __('Encounter Type');?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -13,18 +13,8 @@
 		</dd>
 	</dl>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Encounter Type'), array('action' => 'edit', $encounterType['EncounterType']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Encounter Type'), array('action' => 'delete', $encounterType['EncounterType']['id']), null, __('Are you sure you want to delete # %s?', $encounterType['EncounterType']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Encounter Types'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Encounter Type'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Encounters'), array('controller' => 'encounters', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Encounter'), array('controller' => 'encounters', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
 <div class="related">
+    <br />
 	<h3><?php echo __('Related Encounters');?></h3>
 	<?php if (!empty($encounterType['Encounter'])):?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -62,10 +52,4 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
-
-	<div class="actions">
-		<ul>
-			<li><?php echo $this->Html->link(__('New Encounter'), array('controller' => 'encounters', 'action' => 'add'));?> </li>
-		</ul>
-	</div>
 </div>

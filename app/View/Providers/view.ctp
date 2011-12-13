@@ -1,5 +1,5 @@
 <div class="providers view">
-<h2><?php  echo __('Provider');?></h2>
+<h2><?php  echo __('Insurance Provider');?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -11,9 +11,14 @@
 			<?php echo $this->Html->link($provider['Patient']['name'], array('controller' => 'patients', 'action' => 'view', $provider['Patient']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Insurance Company'); ?></dt>
+		<dt><?php echo __('Primary'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['insurance_company']); ?>
+			<?php echo h($provider['Patient']['primary'] == $provider['Provider']['id'] ? 'yes' : 'no'); ?>
+			&nbsp;
+		</dd>
+        <dt><?php echo __('Company'); ?></dt>
+		<dd>
+			<?php echo h($provider['Provider']['company']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Group Number'); ?></dt>
@@ -26,56 +31,47 @@
 			<?php echo h($provider['Provider']['id_number']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber Name'); ?></dt>
+		<dt><?php echo __('Subscriber'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_name']); ?>
+			<?php echo h($provider['Provider']['subscriber']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber Relationship'); ?></dt>
+		<dt><?php echo __('Relationship to Patient'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_relationship']); ?>
+			<?php echo h($provider['Provider']['relationship']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber Ssn'); ?></dt>
+		<dt><?php echo __('SSN'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_ssn']); ?>
+			<?php echo h($provider['Provider']['ssn']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber Dob'); ?></dt>
+		<dt><?php echo __('DoB'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_dob']); ?>
+			<?php echo h($provider['Provider']['dob']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber Address'); ?></dt>
+		<dt><?php echo __('Address'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_address']); ?>
+			<?php echo h($provider['Provider']['address']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber City'); ?></dt>
+		<dt><?php echo __('City'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_city']); ?>
+			<?php echo h($provider['Provider']['city']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber State'); ?></dt>
+		<dt><?php echo __('State'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_state']); ?>
+			<?php echo h($provider['Provider']['state']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Subscriber Zip'); ?></dt>
+		<dt><?php echo __('Zip'); ?></dt>
 		<dd>
-			<?php echo h($provider['Provider']['subscriber_zip']); ?>
+			<?php echo h($provider['Provider']['zip']); ?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Provider'), array('action' => 'edit', $provider['Provider']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Provider'), array('action' => 'delete', $provider['Provider']['id']), null, __('Are you sure you want to delete # %s?', $provider['Provider']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Providers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Provider'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Patients'), array('controller' => 'patients', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Patient'), array('controller' => 'patients', 'action' => 'add')); ?> </li>
-	</ul>
+    <br />
+    <div align="right"><?php echo $this->Html->link(__('Back to Insurance'), array('action' => 'index'));?></div>
 </div>

@@ -1,14 +1,18 @@
 <?php
 App::uses('AppModel', 'Model');
-
 /**
  * Appointment Model
  *
  * @property Patient $Patient
  * @property User $User
  */
-class Appointment extends AppModel {
-    
+class Appointment extends AppModel {    
+    /**
+     * Display field
+     *
+     * @var string
+     */
+	public $displayField = 'start_time';    
     /**
      * Validation rules
      *
@@ -46,9 +50,6 @@ class Appointment extends AppModel {
 			),
 		),
 	);
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
     /**
      * belongsTo associations
      *

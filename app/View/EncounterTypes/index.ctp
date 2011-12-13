@@ -35,7 +35,9 @@
 	?>
 	</div>
     <br />
-	<h3><b><?php echo __('Under Construction...');?></b></h3>
+    <table>
+        <td class="actions"><?php echo $this->Html->link(__('New Encounter Type'), array('action' => 'add'));?></td>     
+    </table>
 	<br />
     <div align="right"><?php echo $this->Html->link(__('Back to Management'), array('controller' => 'users', 'action' => 'manage'));?></div>
 

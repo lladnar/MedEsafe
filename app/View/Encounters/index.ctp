@@ -2,40 +2,31 @@
 	<h2><?php echo __('Encounters');?></h2>
 	<table cellpadding="0" cellspacing="0">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('patient_id');?></th>
 			<th><?php echo $this->Paginator->sort('encounter_type_id');?></th>
-			<th><?php echo $this->Paginator->sort('user_id');?></th>
-			<th><?php echo $this->Paginator->sort('appointment_id');?></th>
-			<th><?php echo $this->Paginator->sort('attachment_id');?></th>
-			<th><?php echo $this->Paginator->sort('date_time');?></th>
+			<th><?php echo $this->Paginator->sort('patient_id');?></th>
+			<th><?php echo $this->Paginator->sort('date_time', 'Date & Time');?></th>
+			<th><?php echo $this->Paginator->sort('user_id', 'Encounter with');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 	$i = 0;
-	foreach ($encounters as $encounter): ?>
+	foreach ($encounters as $encounter): 
+        if ($encounter['Patient']['id'])?>
 	<tr>
-		<td><?php echo h($encounter['Encounter']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($encounter['Patient']['name'], array('controller' => 'patients', 'action' => 'view', $encounter['Patient']['id'])); ?>
+			<?php echo $this->Html->link($encounter['EncounterType']['name'], array('controller' => 'encounter_types', 'action' => 'view', $encounter['EncounterType']['id']));?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($encounter['EncounterType']['id'], array('controller' => 'encounter_types', 'action' => 'view', $encounter['EncounterType']['id'])); ?>
+			<?php echo $this->Html->link($encounter['Patient']['name'], array('controller' => 'patients', 'action' => 'view', $encounter['Patient']['id']));?>
 		</td>
+		<td><?php echo h($encounter['Encounter']['date_time']);?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($encounter['User']['name'], array('controller' => 'users', 'action' => 'view', $encounter['User']['id'])); ?>
+			<?php echo $this->Html->link($encounter['User']['name'], array('controller' => 'users', 'action' => 'view', $encounter['User']['id']));?>
 		</td>
-		<td>
-			<?php echo $this->Html->link($encounter['Appointment']['id'], array('controller' => 'appointments', 'action' => 'view', $encounter['Appointment']['id'])); ?>
-		</td>
-		<td>
-			<?php echo $this->Html->link($encounter['Attachment']['name'], array('controller' => 'attachments', 'action' => 'view', $encounter['Attachment']['id'])); ?>
-		</td>
-		<td><?php echo h($encounter['Encounter']['date_time']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $encounter['Encounter']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $encounter['Encounter']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $encounter['Encounter']['id']), null, __('Are you sure you want to delete # %s?', $encounter['Encounter']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $encounter['Encounter']['id']));?>
+			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $encounter['Encounter']['id']));?>
+			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $encounter['Encounter']['id']), null, __('Are you sure you want to delete # %s?', $encounter['Encounter']['id']));?>
 		</td>
 	</tr>
 <?php endforeach; ?>

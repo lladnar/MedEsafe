@@ -28,7 +28,7 @@ class AppointmentsController extends AppController {
 	public function view($id = null) {
 		$this->Appointment->id = $id;
 		if (!$this->Appointment->exists()) {
-			throw new NotFoundException(__('Invalid appointment'));
+			throw new NotFoundException(__('Invalid appointment.'));
 		}
 		$this->set('appointment', $this->Appointment->read(null, $id));
 	}
@@ -42,10 +42,10 @@ class AppointmentsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Appointment->create();
 			if ($this->Appointment->save($this->request->data)) {
-				$this->Session->setFlash(__('The appointment has been saved'));
+				$this->Session->setFlash(__('Appointment saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The appointment could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Appointment not saved.  Errors found.'));
 			}
 		}
 		$patients = $this->Appointment->Patient->find('list');
@@ -66,10 +66,10 @@ class AppointmentsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Appointment->save($this->request->data)) {
-				$this->Session->setFlash(__('The appointment has been saved.'));
+				$this->Session->setFlash(__('Appointment saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The appointment could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Appointment not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->Appointment->read(null, $id);
@@ -97,7 +97,7 @@ class AppointmentsController extends AppController {
 			$this->Session->setFlash(__('Appointment deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Appointment was not deleted.'));
+		$this->Session->setFlash(__('Appointment not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

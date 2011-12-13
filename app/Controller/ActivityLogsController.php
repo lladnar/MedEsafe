@@ -27,7 +27,7 @@ class ActivityLogsController extends AppController {
 	public function view($id = null) {
 		$this->ActivityLog->id = $id;
 		if (!$this->ActivityLog->exists()) {
-			throw new NotFoundException(__('Invalid activity log'));
+			throw new NotFoundException(__('Invalid activity log.'));
 		}
 		$this->set('activityLog', $this->ActivityLog->read(null, $id));
 	}
@@ -41,10 +41,10 @@ class ActivityLogsController extends AppController {
 		if ($this->request->is('post')) {
 			$this->ActivityLog->create();
 			if ($this->ActivityLog->save($this->request->data)) {
-				$this->Session->setFlash(__('The activity log has been saved'));
+				$this->Session->setFlash(__('Activity log saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The activity log could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Activity log not saved.  Errors found.'));
 			}
 		}
 		$users = $this->ActivityLog->User->find('list');
@@ -63,14 +63,14 @@ class ActivityLogsController extends AppController {
 	public function edit($id = null) {
 		$this->ActivityLog->id = $id;
 		if (!$this->ActivityLog->exists()) {
-			throw new NotFoundException(__('Invalid activity log'));
+			throw new NotFoundException(__('Invalid activity log.'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->ActivityLog->save($this->request->data)) {
-				$this->Session->setFlash(__('The activity log has been saved'));
+				$this->Session->setFlash(__('Activity log saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The activity log could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Activity log not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->ActivityLog->read(null, $id);
@@ -94,13 +94,13 @@ class ActivityLogsController extends AppController {
 		}
 		$this->ActivityLog->id = $id;
 		if (!$this->ActivityLog->exists()) {
-			throw new NotFoundException(__('Invalid activity log'));
+			throw new NotFoundException(__('Invalid activity log.'));
 		}
 		if ($this->ActivityLog->delete()) {
-			$this->Session->setFlash(__('Activity log deleted'));
+			$this->Session->setFlash(__('Activity log deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Activity log was not deleted'));
+		$this->Session->setFlash(__('Activity log not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

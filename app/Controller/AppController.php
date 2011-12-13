@@ -1,13 +1,11 @@
 <?php
-App::uses ('Controller', 'Controller');
-
+App::uses ('Pdr', 'Model');
 /**
  * App Controller
  *
  * @property Controller $Controller
  */
-class AppController extends Controller {
-    
+class AppController extends Controller {    
     public $components = array(
         'Session',
         'Acl',
@@ -15,14 +13,12 @@ class AppController extends Controller {
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
             'loginRedirect' => array('controller' => 'appointments', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
-            'authError' => 'You are not authorized to access this page.',
+            'authError' => 'Not authorized to access this page.',
             'authorize' => array('Controller')
         )
-    );
-        
+    );        
     public $helpers = array('Html', 'Js', 'Form', 'Session', 'Paginator');
-
-    //TEMPORARILY ALLOWS ALL LOGGED IN USERS FULL PERMISSIONS:
+    //TEMPORARILY ALLOW ALL LOGGED IN USERS FULL PERMISSIONS:
     /**
      * AppController::isAuthorized()
      * 
@@ -31,8 +27,7 @@ class AppController extends Controller {
      */
     public function isAuthorized($user) {
         return true;
-    }
-    
+    }    
     /**
      * AppController::beforeFilter()
      * 
@@ -41,5 +36,9 @@ class AppController extends Controller {
     public function beforeFilter() {
         $this->set('logged_in', $this->Auth->loggedIn());
         $this->set('current_user', $this->Auth->user());
+    //  retrieve pdr website and place in a variable     
+        $this->loadModel('Pdr', 1);
+        $pdr = $this->Pdr->read();
+        $this->set('pdr', $this->Pdr->read());
     }
 }

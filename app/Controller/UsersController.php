@@ -17,7 +17,6 @@ class UsersController extends AppController {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
-
 /**
  * view method
  *
@@ -31,7 +30,6 @@ class UsersController extends AppController {
 		}
 		$this->set('user', $this->User->read(null, $id));
 	}
-
 /**
  * add method
  *
@@ -50,7 +48,6 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
-
 /**
  * edit method
  *
@@ -75,7 +72,6 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
-
 /**
  * delete method
  *
@@ -96,15 +92,14 @@ class UsersController extends AppController {
 		}
 		$this->Session->setFlash(__('User not deleted.'));
 		$this->redirect(array('action' => 'index'));
-	}
-    
+	}    
     function login() {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $this->Session->setFlash('Login successful.');
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Username or password was incorrect.');
+                $this->Session->setFlash('Username or password incorrect.');
             }
         }
         
@@ -112,13 +107,11 @@ class UsersController extends AppController {
             $this->Session->setFlash('Already logged in!');
             $this->redirect('/', null, false);
         }
-    }
-    
+    }    
     function logout() {
         $this->Session->setFlash('Logout successful.');
         $this->redirect($this->Auth->logout());
-    }
-    
+    }    
 /**
  * manage method
  *

@@ -8,7 +8,6 @@ App::uses('AppController', 'Controller');
  */
 class PdrsController extends AppController {
 
-
     /**
      * index method
      *
@@ -31,10 +30,10 @@ class PdrsController extends AppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Pdr->save($this->request->data)) {
-				$this->Session->setFlash(__('The URL has been saved.'));
+				$this->Session->setFlash(__('URL saved.'));
 				$this->redirect(array('controller' => 'users', 'action' => 'manage'));
 			} else {
-				$this->Session->setFlash(__('The URL could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('URL not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->Pdr->read(null, $id);

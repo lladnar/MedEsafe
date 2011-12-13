@@ -27,7 +27,7 @@ class EncounterTypesController extends AppController {
 	public function view($id = null) {
 		$this->EncounterType->id = $id;
 		if (!$this->EncounterType->exists()) {
-			throw new NotFoundException(__('Invalid encounter type'));
+			throw new NotFoundException(__('Invalid encounter type.'));
 		}
 		$this->set('encounterType', $this->EncounterType->read(null, $id));
 	}
@@ -41,10 +41,10 @@ class EncounterTypesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->EncounterType->create();
 			if ($this->EncounterType->save($this->request->data)) {
-				$this->Session->setFlash(__('The encounter type has been saved'));
+				$this->Session->setFlash(__('Encounter type saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The encounter type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Encounter type not saved.  Errors found.'));
 			}
 		}
 	}
@@ -58,14 +58,14 @@ class EncounterTypesController extends AppController {
 	public function edit($id = null) {
 		$this->EncounterType->id = $id;
 		if (!$this->EncounterType->exists()) {
-			throw new NotFoundException(__('Invalid encounter type'));
+			throw new NotFoundException(__('Invalid encounter type.'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->EncounterType->save($this->request->data)) {
-				$this->Session->setFlash(__('The encounter type has been saved'));
+				$this->Session->setFlash(__('Encounter type saved.'));
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The encounter type could not be saved. Please, try again.'));
+				$this->Session->setFlash(__('Encounter type not saved.  Errors found.'));
 			}
 		} else {
 			$this->request->data = $this->EncounterType->read(null, $id);
@@ -84,13 +84,13 @@ class EncounterTypesController extends AppController {
 		}
 		$this->EncounterType->id = $id;
 		if (!$this->EncounterType->exists()) {
-			throw new NotFoundException(__('Invalid encounter type'));
+			throw new NotFoundException(__('Invalid encounter type.'));
 		}
 		if ($this->EncounterType->delete()) {
-			$this->Session->setFlash(__('Encounter type deleted'));
+			$this->Session->setFlash(__('Encounter type deleted.'));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->Session->setFlash(__('Encounter type was not deleted'));
+		$this->Session->setFlash(__('Encounter type not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

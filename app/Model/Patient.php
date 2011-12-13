@@ -1,24 +1,16 @@
 <?php
-App::uses('AppModel', 'Model');
-
+App::uses('AppModel', 'Model'
+);
 /**
  * Patient Model
  *
  */
-class Patient extends AppModel {
-    
-    public $name = 'Patient';
-    
+class Patient extends AppModel {    
+    public $name = 'Patient'
+    ;    
  // SEARCH ENGINE:
-    public $actsAs = array('Searchable');
-    
-    /**
-     * Display field
-     *
-     * @var string
-     */
-	public $displayField = 'name';
-    
+    public $actsAs = array('Searchable'
+    );    
     /**
      * Virtual field
      *
@@ -27,14 +19,19 @@ class Patient extends AppModel {
 	public $virtualFields = array(
         'name' => 'CONCAT(Patient.first_name, " ", Patient.last_name)'
     );
-    
+    /**
+     * Display field
+     *
+     * @var string
+     */
+	public $displayField = 'name'
+    ;        
     /**
      * Validation rules
      *
      * @var array
      */
-  	public $validate = array(
-		
+  	public $validate = array(		
 		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -55,7 +52,7 @@ class Patient extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
 		),
-		'date_of_birth' => array(
+		'dob' => array(
 			'date' => array(
 				'rule' => array('date'),
 				'message' => '*REQUIRED FIELD - MUST ENTER COMPLETE DATE',
@@ -65,7 +62,7 @@ class Patient extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
 		),		
-        'social_security' => array(			
+        'ssn' => array(			
             'ssn' => array(
 				'rule' => array('ssn', null, 'us'),
 				'message' => '*MUST USE "000-00-0000" FORMAT',
@@ -161,7 +158,7 @@ class Patient extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
 		),
-        'contact_home_phone' => array(
+        'contact_home' => array(
             'phone' => array(
                 'rule' => array('phone', null, 'us'),
                 'message' => '*ENTER VALID US PHONE NUMBER WITH AREA CODE',
@@ -171,7 +168,7 @@ class Patient extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
             )
         ),
-        'contact_cell_phone' => array(
+        'contact_cell' => array(
             'phone' => array(
                 'rule' => array('phone', null, 'us'),
                 'message' => '*ENTER VALID US PHONE NUMBER WITH AREA CODE',
@@ -181,7 +178,7 @@ class Patient extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
             )
         ),
-        'contact_work_phone' => array(
+        'contact_work' => array(
             'phone' => array(
                 'rule' => array('phone', null, 'us'),
                 'message' => '*ENTER VALID US PHONE NUMBER WITH AREA CODE',
@@ -218,64 +215,13 @@ class Patient extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
-		),
-        'insurance_company' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => '*REQUIRED FIELD - MUST ENTER COMPANY',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			)
-		),
-        'subscriber' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => '*REQUIRED FIELD - MUST ENTER NAME',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			)
-		),
-		'subscriber_dob' => array(
-			'date' => array(
-				'rule' => array('date'),
-				'message' => '*REQUIRED FIELD - MUST ENTER COMPLETE DATE',
-				//'allowEmpty' => false,
-				//'required' => true,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			)
-		),		
-        'subscriber_ssn' => array(			
-            'ssn' => array(
-				'rule' => array('ssn', null, 'us'),
-				'message' => '*MUST USE "000-00-0000" FORMAT',
-				'allowEmpty' => true,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations			
-			)
-		),
-        'subscriber_zip' => array(
-            'postal' => array(
-                'rule' => array('postal', null, 'us'),
-                'message' => '*ENTER VALID US ZIP CODE',
-                'allowEmpty' => true,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-            )
-        ),
-	);
-    
-/**
- * hasMany associations
- *
- * @var array
- */
+		)
+	);    
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
 	public $hasMany = array(
 		'Provider' => array(
 			'className' => 'Provider',
@@ -291,5 +237,4 @@ class Patient extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 }
