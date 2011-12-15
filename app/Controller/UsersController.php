@@ -1,28 +1,26 @@
 <?php
 App::uses('AppController', 'Controller');
-
 /**
  * Users Controller
  *
  * @property User $User
  */
 class UsersController extends AppController {
-
-/**
- * index method
- *
- * @return void
- */
+    /**
+     * index method
+     *
+     * @return void
+     */
 	public function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
+    /**
+     * view method
+     *
+     * @param string $id
+     * @return void
+     */
 	public function view($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -30,11 +28,11 @@ class UsersController extends AppController {
 		}
 		$this->set('user', $this->User->read(null, $id));
 	}
-/**
- * add method
- *
- * @return void
- */
+    /**
+     * add method
+     *
+     * @return void
+     */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
@@ -48,12 +46,12 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
-/**
- * edit method
- *
- * @param string $id
- * @return void
- */
+    /**
+     * edit method
+     *
+     * @param string $id
+     * @return void
+     */
 	public function edit($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
@@ -72,12 +70,12 @@ class UsersController extends AppController {
 		$groups = $this->User->Group->find('list');
 		$this->set(compact('groups'));
 	}
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
+    /**
+     * delete method
+     *
+     * @param string $id
+     * @return void
+     */
 	public function delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();
@@ -112,11 +110,11 @@ class UsersController extends AppController {
         $this->Session->setFlash('Logout successful.');
         $this->redirect($this->Auth->logout());
     }    
-/**
- * manage method
- *
- * @return void
- */
+    /**
+     * manage method
+     *
+     * @return void
+     */
 	public function manage() {
         if ($this->request->is('post')) {
             $this->redirect(array('controller' => $this->request->data['User']['radio'], 'action' => 'index'));

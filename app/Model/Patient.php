@@ -1,16 +1,20 @@
 <?php
-App::uses('AppModel', 'Model'
-);
+App::uses('AppModel', 'Model');
 /**
  * Patient Model
  *
+ * @property Appointment $Appointment
+ * @property Attachment $Attachment
+ * @property Encounter $Encounter
+ * @property Provider $Provider
  */
-class Patient extends AppModel {    
-    public $name = 'Patient'
-    ;    
+class Patient extends AppModel {
+    
+    public $name = 'Patient';
+      
  // SEARCH ENGINE:
-    public $actsAs = array('Searchable'
-    );    
+    public $actsAs = array('Searchable');
+    
     /**
      * Virtual field
      *
@@ -19,13 +23,15 @@ class Patient extends AppModel {
 	public $virtualFields = array(
         'name' => 'CONCAT(Patient.first_name, " ", Patient.last_name)'
     );
+    
     /**
      * Display field
      *
      * @var string
      */
 	public $displayField = 'name'
-    ;        
+    ; 
+           
     /**
      * Validation rules
      *
@@ -216,13 +222,53 @@ class Patient extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
 		)
-	);    
+	);
+        
     /**
      * hasMany associations
      *
      * @var array
      */
 	public $hasMany = array(
+		'Appointment' => array(
+			'className' => 'Appointment',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Attachment' => array(
+			'className' => 'Attachment',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Encounter' => array(
+			'className' => 'Encounter',
+			'foreignKey' => 'patient_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
 		'Provider' => array(
 			'className' => 'Provider',
 			'foreignKey' => 'patient_id',

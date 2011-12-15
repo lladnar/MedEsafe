@@ -6,6 +6,7 @@ App::uses('AppModel', 'Model');
  * @property Patient $Patient
  */
 class Provider extends AppModel {
+    
     /**
      * Validation rules
      *
@@ -73,6 +74,7 @@ class Provider extends AppModel {
             )
 		),
 	);
+    
     /**
      * belongsTo associations
      *
@@ -85,6 +87,27 @@ class Provider extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		)
+	);
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+	public $hasMany = array(
+		'ActivityLog' => array(
+			'className' => 'ActivityLog',
+			'foreignKey' => 'provider_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 }

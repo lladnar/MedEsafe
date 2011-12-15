@@ -1,5 +1,5 @@
 <?php
-App::uses ('Pdr', 'Model');
+App::uses ('Controller', 'Controller');
 /**
  * App Controller
  *
@@ -11,13 +11,14 @@ class AppController extends Controller {
         'Acl',
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login'),
-            'loginRedirect' => array('controller' => 'appointments', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'appointments', 'action' => 'calendar'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
             'authError' => 'Not authorized to access this page.',
             'authorize' => array('Controller')
         )
-    );        
+    );
     public $helpers = array('Html', 'Js', 'Form', 'Session', 'Paginator');
+    
     //TEMPORARILY ALLOW ALL LOGGED IN USERS FULL PERMISSIONS:
     /**
      * AppController::isAuthorized()
@@ -27,7 +28,8 @@ class AppController extends Controller {
      */
     public function isAuthorized($user) {
         return true;
-    }    
+    }
+    
     /**
      * AppController::beforeFilter()
      * 

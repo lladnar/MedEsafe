@@ -22,6 +22,9 @@
             <li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active"><a href="#tabs-1">Details</a></li>
             <li class="ui-state-default ui-corner-top"><a href="#tabs-2">Notes</a></li>
             <li class="ui-state-default ui-corner-top"><a href="#tabs-3">Emergency Contact</a></li>
+            <li class="ui-state-default ui-corner-top"><a href="#tabs-4">Insurance</a></li>
+            <li class="ui-state-default ui-corner-top"><a href="#tabs-5">Appointments</a></li>
+            <li class="ui-state-default ui-corner-top"><a href="#tabs-6">Encounters</a></li>
         </ul>
              
         <div id="tabs-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom">
@@ -124,7 +127,7 @@
             <fieldset>
             <?php
                 echo $this->Form->input('notes', array(
-                    'label' => 'Notes:',
+                    'label' => false,
                     'type' => 'textarea',
                     'rows' => '10'
                 ));
@@ -183,7 +186,145 @@
                 ));
             ?>
             </fieldset>	
-        </div>        
+        </div>
+        
+        <div id="tabs-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+            <fieldset>
+    		<?php
+                if (!empty($patient['Provider'])):
+            ?>
+        	<table cellpadding = "0" cellspacing = "0">
+            <tr>
+                <th><?php echo __('Primary');?></th>
+                <th><?php echo __('Company');?></th>
+                <th><?php echo __('Group #');?></th>
+                <th><?php echo __('Subscriber');?></th>
+                <th><?php echo __('Id #');?></th>
+                <th class="actions"><?php echo __('Actions');?></th>
+            </tr>
+        	<?php
+        		$i = 0;
+        		foreach ($patient['Provider'] as $provider):
+            ?>
+    		<tr>
+       			<td><?php echo h($patient['Patient']['primary'] == $provider['id'] ? 'yes' : 'no');?>&nbsp;</td>
+        		<td><?php echo h($provider['company']);?>&nbsp;</td>
+        		<td><?php echo h($provider['group_number']);?>&nbsp;</td>
+        		<td><?php echo h($provider['subscriber']);?>&nbsp;</td>
+        		<td><?php echo h($provider['id_number']);?>&nbsp;</td>
+       			<td class="actions">
+                    <?php echo $this->Html->link(__('View'), array('controller' => 'providers', 'action' => 'view', $provider['id']));?>
+                    <?php echo $this->Html->link(__('Edit'), array('controller' => 'providers', 'action' => 'edit', $provider['id']));?>
+                    <?php echo $this->Form->postLink(__('Delete'), array('controller' => 'providers', 'action' => 'delete', $provider['id']), null, __('Are you sure you want to delete this provider?'));?>
+       			</td>
+    		</tr>
+        	<?php 
+                endforeach;
+            ?>
+        	</table>
+            <?php 
+                endif;
+            ?>
+            <br />
+        	<table>
+      			<td class="actions"><?php echo $this->Html->link(__('New Provider'), array('controller' => 'providers', 'action' => 'add'));?></td>
+       		</table>
+        </div>
+        
+        <div id="tabs-5" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+            <?php
+                if (!empty($patient['Appointment'])):
+            ?>
+            <table cellpadding="0" cellspacing="0">
+            <tr>
+                <th><?php echo __('Start Time');?></th>
+    			<th><?php echo __('End Time');?></th>
+    			<th><?php echo __('Patient Name');?></th>
+    			<th><?php echo __('Appointment With');?></th>
+    			<th><?php echo __('Scheduled By');?></th>
+    			<th><?php echo __('Description');?></th>
+    			<th><?php echo __('Notes');?></th>
+    			<th class="actions"><?php echo __('Actions');?></th>
+            </tr>
+        	<?php
+            	$i = 0;
+            	foreach ($patient['Appointment'] as $appointment):
+            ?>
+            <tr>
+        		<td><?php echo h($appointment['start_time']); ?>&nbsp;</td>
+        		<td><?php echo h($appointment['end_time']); ?>&nbsp;</td>
+        		<td><?php echo h($patient['Patient']['name']); ?>&nbsp;</td>
+        		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+        		<td><?php echo h($appointment['scheduled_by']); ?>&nbsp;</td>
+        		<td><?php echo h($appointment['description']); ?>&nbsp;</td>
+        		<td><?php echo h($appointment['notes']); ?>&nbsp;</td>
+        		<td class="actions">
+        			<?php echo $this->Html->link(__('View'), array('controller' => 'appointments', 'action' => 'view', $appointment['id'])); ?>
+        			<?php echo $this->Html->link(__('Edit'), array('controller' => 'appointments', 'action' => 'edit', $appointment['id'])); ?>
+        			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'appointments', 'action' => 'delete', $appointment['id']), null, __('Are you sure you want to delete this appointment?')); ?>
+        		</td>
+            </tr>
+            <?php 
+                endforeach; 
+            ?>
+        	</table>
+            <?php 
+                endif;
+            ?>
+            <br />
+            <table>
+                <td class="actions"><?php echo $this->Html->link(__('New Appointment'), array('controller' => 'appointments', 'action' => 'add'));?></td>        
+            </table>
+        </div>
+        
+        <div id="tabs-6" class="ui-tabs-panel ui-widget-content ui-corner-bottom ui-tabs-hide">
+            <?php
+                if (!empty($patient['Encounter'])):
+            ?>
+        	<table cellpadding="0" cellspacing="0">
+        	<tr>
+                <th><?php echo __('Encounter Type');?></th>
+                <th><?php echo __('Patient');?></th>
+                <th><?php echo __('Date & Time');?></th>
+                <th><?php echo __('Encounter with');?></th>
+                <th class="actions"><?php echo __('Actions');?></th>
+        	</tr>
+        	<?php
+            	$i = 0;
+            	foreach ($patient['Encounter'] as $encounter):
+            ?>
+        	<tr>
+        		<td>
+        			<?php echo $this->Html->link($encounterType['EncounterType']['name'], array('controller' => 'encounter_types', 'action' => 'view', $encounterType['EncounterType']['id']));?>
+        		</td>
+        		<td>
+        			<?php echo $this->Html->link($patient['Patient']['name'], array('controller' => 'patients', 'action' => 'view', $patient['Patient']['id']));?>
+        		</td>
+        		<td><?php echo h($encounter['date_time']);?>&nbsp;</td>
+        		<td>
+        			<?php echo $this->Html->link($user['User']['name'], array('controller' => 'users', 'action' => 'view', $user['User']['id']));?>
+        		</td>
+        		<td class="actions">
+        			<?php echo $this->Html->link(__('View'), array('controller' => 'encounters', 'action' => 'view', $encounter['id']));?>
+        			<?php echo $this->Html->link(__('Edit'), array('controller' => 'encounters', 'action' => 'edit', $encounter['id']));?>
+        			<?php echo $this->Form->postLink(__('Delete'), array('controller' => 'encounters', 'action' => 'delete', $encounter['id']), null, __('Are you sure you want to delete this encounter?'));?>
+        		</td>
+        	</tr>
+            <?php 
+                endforeach;
+            ?>
+        	</table>
+            <?php 
+                endif;
+            ?>
+            <br />
+            <table>
+                <td class="actions"><?php echo $this->Html->link(__('New Encounter'), array('controller' => 'encounters', 'action' => 'add'));?></td>        
+            </table>
+        </div>
+
+        
+        
         <div align="center"><?php echo $this->Form->end(__('Submit'));?></div>
         <br />
     </div>

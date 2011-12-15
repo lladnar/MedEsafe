@@ -9,9 +9,9 @@
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
-	$i = 0;
-	foreach ($encounters as $encounter): 
-        if ($encounter['Patient']['id'])?>
+    	$i = 0;
+    	foreach ($encounters as $encounter):
+    ?>
 	<tr>
 		<td>
 			<?php echo $this->Html->link($encounter['EncounterType']['name'], array('controller' => 'encounter_types', 'action' => 'view', $encounter['EncounterType']['id']));?>
@@ -29,13 +29,15 @@
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $encounter['Encounter']['id']), null, __('Are you sure you want to delete # %s?', $encounter['Encounter']['id']));?>
 		</td>
 	</tr>
-<?php endforeach; ?>
+    <?php
+        endforeach;
+    ?>
 	</table>
 	<p>
 	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
+    	echo $this->Paginator->counter(array(
+    	   'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+    	));
 	?>	</p>
 
 	<div class="paging">

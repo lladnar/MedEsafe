@@ -100,4 +100,8 @@ class AppointmentsController extends AppController {
 		$this->Session->setFlash(__('Appointment not deleted.'));
 		$this->redirect(array('action' => 'index'));
 	}
+    
+    public function calendar() {
+        
+    }
 }

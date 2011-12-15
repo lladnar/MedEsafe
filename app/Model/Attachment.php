@@ -8,11 +8,12 @@ App::uses('AppModel', 'Model');
  * @property Encounter $Encounter
  */
 class Attachment extends AppModel {
-/**
- * Validation rules
- *
- * @var array
- */
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
 	public $validate = array(
 		'patient_id' => array(
 			'numeric' => array(
@@ -56,13 +57,11 @@ class Attachment extends AppModel {
 		),
 	);
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * belongsTo associations
- *
- * @var array
- */
+    /**
+     * belongsTo associations
+     *
+     * @var array
+     */
 	public $belongsTo = array(
 		'Patient' => array(
 			'className' => 'Patient',
@@ -80,11 +79,11 @@ class Attachment extends AppModel {
 		)
 	);
 
-/**
- * hasMany associations
- *
- * @var array
- */
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
 	public $hasMany = array(
 		'Encounter' => array(
 			'className' => 'Encounter',
@@ -100,5 +99,4 @@ class Attachment extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 }

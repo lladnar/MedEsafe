@@ -7,6 +7,15 @@ App::uses('AppController', 'Controller');
  */
 class ProvidersController extends AppController {
     /**
+     * beforeFilter method
+     * 
+     * @return void
+     */
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->set('current_patient', $this->Provider->Patient->id);
+    }
+    /**
      * index method
      *
      * @return void

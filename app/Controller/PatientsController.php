@@ -5,20 +5,20 @@ App::uses('AppController', 'Controller');
  *
  * @property Patient $Patient
  */
-class PatientsController extends AppController {    
+class PatientsController extends AppController {
+    
     /**
-     * beforeFilter method
+     * PatientsController::beforeFilter()
      * 
-     * @return void
+     * @return
      */
-    /* Provider's functionality (doubt will be possible)
     public function beforeFilter() {
         parent::beforeFilter();
-    //  load Provider model
-        $this->loadModel('Provider', null);        
-        $this->set('providers', $this->paginate());
+        $this->loadModel('Encounter');
+        $this->loadModel('EncounterType');
+        $this->loadModel('User');
     }
-    */  
+    
     /**
      * index method
      *
@@ -29,6 +29,7 @@ class PatientsController extends AppController {
 		$this->set('patients', $this->paginate());
       //Active/Inactive/All selector  $this->set('show');
 	}
+    
     /**
      * search method
      *
@@ -37,7 +38,8 @@ class PatientsController extends AppController {
     public function search() { 
             $this->set('results', $this->Patient->search($this->data['Patient']['q']));
             $this->paginate();
-    }    
+    }
+       
     /**
      * view method
      *
@@ -51,6 +53,7 @@ class PatientsController extends AppController {
 		}
 		$this->set('patient', $this->Patient->read(null, $id));
 	}
+    
     /**
      * add method
      *
@@ -67,6 +70,7 @@ class PatientsController extends AppController {
 			}
 		}
 	}
+    
     /**
      * edit method
      *
@@ -88,7 +92,12 @@ class PatientsController extends AppController {
 		} else {
 			$this->request->data = $this->Patient->read(null, $id);
 		}
-	}    
+        $this->set('encounter', $this->Encounter->read(null, $id));
+        $this->set('encounterType', $this->EncounterType->read(null, $id));
+        $this->set('patient', $this->Patient->read(null, $id));
+        $this->set('user', $this->User->read(null, $id));       
+	}
+    
     /**
      * import method
      *
@@ -97,6 +106,7 @@ class PatientsController extends AppController {
     public function import(){
         
     }
+    
     /**
      * export method
      *

@@ -12,11 +12,12 @@ App::uses('AppModel', 'Model');
  * @property Attachment $Attachment
  */
 class Encounter extends AppModel {
-/**
- * Validation rules
- *
- * @var array
- */
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
 	public $validate = array(
 		'patient_id' => array(
 			'numeric' => array(
@@ -48,35 +49,13 @@ class Encounter extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'appointment_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'attachment_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
 	);
 
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
-/**
- * belongsTo associations
- *
- * @var array
- */
+    /**
+     * belongsTo associations
+     *
+     * @var array
+     */
 	public $belongsTo = array(
 		'Patient' => array(
 			'className' => 'Patient',
@@ -115,11 +94,11 @@ class Encounter extends AppModel {
 		)
 	);
 
-/**
- * hasMany associations
- *
- * @var array
- */
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
 	public $hasMany = array(
 		'ActivityLog' => array(
 			'className' => 'ActivityLog',
@@ -148,5 +127,4 @@ class Encounter extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 }

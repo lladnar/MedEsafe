@@ -1,7 +1,6 @@
 <?php
 //App::uses('AppModel', 'Model', 'AuthComponent', 'Controller/Component');
 App::uses('AuthComponent', 'Controller/Component');
-
 /**
  * User Model
  *
@@ -27,42 +26,6 @@ class User extends AppModel {
      * @var string
      */
 	public $displayField = 'name';
-        
-    /**
-     * belongsTo associations
-     *
-     * @var array
-     */
-	public $belongsTo = array(
-		'Group' => array(
-			'className' => 'Group',
-			'foreignKey' => 'group_id',
-			//'conditions' => '',
-			//'fields' => '',
-			//'order' => ''
-		)
-	);
-
-    /**
-     * hasMany associations
-     *
-     * @var array
-     */
-	public $hasMany = array(
-		'Appointment' => array(
-			'className' => 'Appointment',
-			'foreignKey' => 'user_id',
-			'dependent' => false,
-			//'conditions' => '',
-			//'fields' => '',
-			//'order' => '',
-			//'limit' => '',
-			//'offset' => '',
-			//'exclusive' => '',
-			//'finderQuery' => '',
-			//'counterQuery' => ''
-		)
-	);
         
     /**
      * Validation rules
@@ -256,6 +219,81 @@ class User extends AppModel {
 //    function bindNode($user) {
 //    return array('model' => 'Group', 'foreign_key' => $user['User']['group_id']);
 //    }
+        
+    /**
+     * belongsTo associations
+     *
+     * @var array
+     */
+	public $belongsTo = array(
+		'Group' => array(
+			'className' => 'Group',
+			'foreignKey' => 'group_id',
+			//'conditions' => '',
+			//'fields' => '',
+			//'order' => ''
+		)
+	);
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+	public $hasMany = array(
+		'ActivityLog' => array(
+			'className' => 'ActivityLog',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Appointment' => array(
+			'className' => 'Appointment',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Encounter' => array(
+			'className' => 'Encounter',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Setting' => array(
+			'className' => 'Setting',
+			'foreignKey' => 'user_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 
     /**
      * User::beforeSave()

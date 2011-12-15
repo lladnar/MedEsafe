@@ -7,23 +7,22 @@ App::uses('AppController', 'Controller');
  */
 class EncountersController extends AppController {
 
-
-/**
- * index method
- *
- * @return void
- */
+    /**
+     * index method
+     *
+     * @return void
+     */
 	public function index() {
 		$this->Encounter->recursive = 0;
 		$this->set('encounters', $this->paginate());
 	}
 
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
+    /**
+     * view method
+     *
+     * @param string $id
+     * @return void
+     */
 	public function view($id = null) {
 		$this->Encounter->id = $id;
 		if (!$this->Encounter->exists()) {
@@ -32,11 +31,11 @@ class EncountersController extends AppController {
 		$this->set('encounter', $this->Encounter->read(null, $id));
 	}
 
-/**
- * add method
- *
- * @return void
- */
+    /**
+     * add method
+     *
+     * @return void
+     */
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Encounter->create();
@@ -55,12 +54,12 @@ class EncountersController extends AppController {
 		$this->set(compact('patients', 'encounterTypes', 'users', 'appointments', 'attachments'));
 	}
 
-/**
- * edit method
- *
- * @param string $id
- * @return void
- */
+    /**
+     * edit method
+     *
+     * @param string $id
+     * @return void
+     */
 	public function edit($id = null) {
 		$this->Encounter->id = $id;
 		if (!$this->Encounter->exists()) {
@@ -84,12 +83,12 @@ class EncountersController extends AppController {
 		$this->set(compact('patients', 'encounterTypes', 'users', 'appointments', 'attachments'));
 	}
 
-/**
- * delete method
- *
- * @param string $id
- * @return void
- */
+    /**
+     * delete method
+     *
+     * @param string $id
+     * @return void
+     */
 	public function delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();

@@ -3,6 +3,7 @@
     <?php echo $this->Form->create('Encounter');?>
 	<fieldset>		
 	<?php
+//needs to be a hidden form w/current patient's id entered.
 		echo $this->Form->input('patient_id', array(
             'label' => 'Patient Name:',
             'empty' => ''
@@ -17,7 +18,8 @@
             ));
 		echo $this->Form->input('appointment_id', array(
             'label' => 'Appointment:',
-            'empty' => ''
+//null value not allowed here. also, needs to show only appts. of current patient.
+//            'empty' => ''
             ));
 		echo $this->Form->input('date_time', array(
             'label' => 'Date & Time:',

@@ -6,13 +6,15 @@ App::uses('AppModel', 'Model');
  * @property Patient $Patient
  * @property User $User
  */
-class Appointment extends AppModel {    
+class Appointment extends AppModel {
+    
     /**
      * Display field
      *
      * @var string
      */
-	public $displayField = 'start_time';    
+	public $displayField = 'start_time';  
+
     /**
      * Validation rules
      *
@@ -50,6 +52,7 @@ class Appointment extends AppModel {
 			),
 		),
 	);
+
     /**
      * belongsTo associations
      *
@@ -69,6 +72,40 @@ class Appointment extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		)
+	);
+
+    /**
+     * hasMany associations
+     *
+     * @var array
+     */
+	public $hasMany = array(
+		'ActivityLog' => array(
+			'className' => 'ActivityLog',
+			'foreignKey' => 'appointment_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		),
+		'Encounter' => array(
+			'className' => 'Encounter',
+			'foreignKey' => 'appointment_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 }

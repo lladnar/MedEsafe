@@ -27,14 +27,29 @@
 		<?php echo $title_for_layout;?>
 	</title>
 	<?php
-        echo $this->Html->script(array('jquery-1.7.1.min', 'jquery-ui-1.8.16.custom.min'));
+        echo $this->Html->script(array('jquery-1.7.1.min', 'jquery-ui-1.8.16.custom.min', 'fullcalendar.min'));
         echo $this->Html->meta('icon');
-		echo $this->Html->css ('medesafe.main');   //echo $this->Html->css('jquery-ui-1.8.16.custom')
+		echo $this->Html->css ('medesafe.main');
 		echo $scripts_for_layout;
 	?>
     <script>
-	$(function() {
-		$( "#tabs" ).tabs();
+		$(document).ready(function() {
+	
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'agendaDay,agendaWeek,month'
+			},
+            defaultView: 'agendaDay',
+            allDaySlot: false,
+			editable: true,
+		});		
 	});
 	</script>
 </head>
@@ -45,21 +60,17 @@
 		</div>
 		<div id="content">        
             <?php echo $this->Session->flash();?>
-            <?php echo $this->Session->flash('auth');?>            
-            <?php //ADDS LOGOUT LINK AND LEFT SIDE CHOICES IF NOT LOGIN SCREEN:
-            if ($currentUrl != '/medesafe/users/login') {
-            ?>
+            <?php echo $this->Session->flash('auth');?>
                 <h1 align="right"><?php echo $this->Html->link('logout', array('controller' => 'users', 'action' => 'logout'));?></h1>            
                 <div class="actions">                    
                 	<ul>
-                		<li><?php echo $this->Html->link(__('Appointments'), array('controller' => 'appointments', 'action' => 'calendar'));?> </li>
+                		<li><?php echo $this->Html->link(__('Appointments'), array('controller' => 'appointments', 'action' => 'index'));?> </li>
                 		<li><?php echo $this->Html->link(__('Patients'), array('controller' => 'patients', 'action' => 'index'));?></li>
                 		<li><?php echo $this->Html->link(__('Management'), array('controller' => 'users', 'action' => 'manage'));?> </li>
                         <li><?php echo $this->Html->link(__('AER Search'), array('controller' => 'aer_searches', 'action' => 'search'));?> </li>
                         <li><?php echo $this->Html->link(__('Access PDR'), 'http://' . $pdr['Pdr']['url']);?> </li>
                 	</ul>
                 </div>
-            <?php };?>
             
 			<?php echo $content_for_layout;?>
 

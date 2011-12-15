@@ -1,6 +1,5 @@
 <?php
 App::uses('AppModel', 'Model');
-
 /**
  * EncounterType Model
  *
@@ -32,6 +31,7 @@ class EncounterType extends AppModel {
 			),
 		),
 	);
+    
     /**
      * hasMany associations
      *

@@ -11,8 +11,7 @@ class Group extends AppModel {
 
     function parentNode() {
         return null;
-    }
-    
+    }    
     /**
      * Display field
      *
@@ -45,9 +44,6 @@ class Group extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			)
 	);
-
-	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
     /**
      * hasMany associations
      *
@@ -68,5 +64,4 @@ class Group extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
 }
