@@ -1,5 +1,5 @@
 <div class="encounterTypes view">
-    <h2><?php  echo __('Encounter Type');?></h2>
+<h2><?php  echo __('Encounter Type');?></h2>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -11,10 +11,85 @@
 			<?php echo h($encounterType['EncounterType']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Medications'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['medications']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('M Dosage'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['m_dosage']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Allergies'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['allergies']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Serious Reaction'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['serious_reaction']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Problems'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['problems']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Subjective'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['subjective']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Objective'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['objective']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Assessment'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['assessment']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Plan'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['plan']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Prescriptions'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['prescriptions']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('P Dosage'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['p_dosage']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Status'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['status']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Contact'); ?></dt>
+		<dd>
+			<?php echo h($encounterType['EncounterType']['contact']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Edit Encounter Type'), array('action' => 'edit', $encounterType['EncounterType']['id'])); ?> </li>
+		<li><?php echo $this->Form->postLink(__('Delete Encounter Type'), array('action' => 'delete', $encounterType['EncounterType']['id']), null, __('Are you sure you want to delete # %s?', $encounterType['EncounterType']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Encounter Types'), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Encounter Type'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Encounters'), array('controller' => 'encounters', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Encounter'), array('controller' => 'encounters', 'action' => 'add')); ?> </li>
+	</ul>
+</div>
 <div class="related">
-    <br />
 	<h3><?php echo __('Related Encounters');?></h3>
 	<?php if (!empty($encounterType['Encounter'])):?>
 	<table cellpadding = "0" cellspacing = "0">
@@ -52,4 +127,10 @@
 	<?php endforeach; ?>
 	</table>
 <?php endif; ?>
+
+	<div class="actions">
+		<ul>
+			<li><?php echo $this->Html->link(__('New Encounter'), array('controller' => 'encounters', 'action' => 'add'));?> </li>
+		</ul>
+	</div>
 </div>

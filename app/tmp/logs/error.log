@@ -4470,3 +4470,11 @@
 #8 C:\wamp\www\medesafe\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(EncountersController), Object(CakeRequest), Object(CakeResponse))
 #9 C:\wamp\www\medesafe\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #10 {main}
+2011-12-17 15:42:54 Error: [MissingActionException] Action AppointmentsController::json.html() could not be found.
+#0 C:\wamp\www\medesafe\lib\Cake\Routing\Dispatcher.php(107): Controller->invokeAction(Object(CakeRequest))
+#1 C:\wamp\www\medesafe\lib\Cake\Routing\Dispatcher.php(89): Dispatcher->_invoke(Object(AppointmentsController), Object(CakeRequest), Object(CakeResponse))
+#2 C:\wamp\www\medesafe\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2011-12-17 18:54:33 Error: [MissingControllerException] Controller class Tabletext.htmlController could not be found.
+#0 C:\wamp\www\medesafe\app\webroot\index.php(96): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

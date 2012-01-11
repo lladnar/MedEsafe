@@ -29,7 +29,7 @@
 	<?php
         echo $this->Html->script(array('jquery-1.7.1.min', 'jquery-ui-1.8.16.custom.min', 'fullcalendar.min'));
         echo $this->Html->meta('icon');
-		echo $this->Html->css ('medesafe.main');
+		echo $this->Html->css('medesafe.main');
 		echo $scripts_for_layout;
 	?>
     <script>
@@ -40,15 +40,57 @@
 		var m = date.getMonth();
 		var y = date.getFullYear();
 		
-		$('#calendar').fullCalendar({
+		var calendar = $('#calendar').fullCalendar({
+		  
 			header: {
-				left: 'prev,next today',
+				left: 'prev,today,next',
 				center: 'title',
 				right: 'agendaDay,agendaWeek,month'
 			},
+            
             defaultView: 'agendaDay',
+            minTime: '8:00am',
+            maxTime: '6:00pm',
             allDaySlot: false,
-			editable: true,
+            editable: true,
+			selectable: true,
+			selectHelper: true,
+            
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+            
+            events: [
+				{
+					title: 'John Doe - Physical w/Dr. Wintler, per Linda Prak; notes: uses a walker',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false
+				},
+                {
+					title: 'Mary Smith - Treatment w/Dr. Schivago, per Dr. Schivago',
+					start: new Date(y, m, d, 11),
+					allDay: false
+				},
+				{
+					title: 'Clickable Link',
+					start: new Date(y, m, d+1, 15),
+					end: new Date(y, m, d+1, 16, 30),
+                    allDay: false,
+					url: 'http://medesafe.net/'
+				}
+			]
 		});		
 	});
 	</script>
