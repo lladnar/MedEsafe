@@ -29,7 +29,7 @@
 	<?php
         echo $this->Html->script(array('jquery-1.7.1.min', 'jquery-ui-1.8.16.custom.min'));
         echo $this->Html->meta('icon');
-		echo $this->Html->css ('medesafe.main');   //echo $this->Html->css('jquery-ui-1.8.16.custom')
+		echo $this->Html->css('medesafe.main');   //echo $this->Html->css('jquery-ui-1.8.16.custom')
 		echo $scripts_for_layout;
 	?>
     <script>
