@@ -74,14 +74,15 @@
             
             events: [
 				{
-					title: 'John Doe - Physical w/Dr. Wintler, per Linda Prak; notes: uses a walker',
+					title: '<?php echo $current_user['name'];?> ',
 					start: new Date(y, m, d, 10, 30),
 					allDay: false
 				},
                 {
 					title: 'Mary Smith - Treatment w/Dr. Schivago, per Dr. Schivago',
 					start: new Date(y, m, d, 11),
-					allDay: false
+					allDay: false,
+					editable: true
 				},
 				{
 					title: 'Clickable Link',
